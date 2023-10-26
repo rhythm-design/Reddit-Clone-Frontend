@@ -7,7 +7,7 @@ import './../css/Main.css'
 const Main = () => {
 
     const [postInfo, setPostInfo] = useState([])
-
+    
     useEffect(() => setPostInfo(postData), [])
 
     return (
@@ -27,8 +27,12 @@ const Main = () => {
                     {
                         postInfo.map((post, key) => {
                             return (
-                                <div key={key} >
-                                    
+                                <div key={key} className='postsSectionContainer'>
+                                    <section className='votingSection'>
+                                        <button ><i class="fa-solid fa-arrow-up"></i></button>
+                                        {post.votes}
+                                        <button><i class="fa-solid fa-arrow-down"></i></button>
+                                    </section>
                                     <section className="post">
                                         <h3> {post.username} </h3>
                                         <h1 > {post.title} </h1>
