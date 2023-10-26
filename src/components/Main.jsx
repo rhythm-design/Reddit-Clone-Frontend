@@ -17,8 +17,8 @@ const Main = () => {
                 </img>
                 <input placeholder="Create Post" />
                 <div className='createPostOptions'>
-                    <a><i class="fa-solid fa-image"></i></a>
-                    <a><i class="fa-solid fa-link"></i></a>
+                    <a><i className="fa-solid fa-image"></i></a>
+                    <a><i className="fa-solid fa-link"></i></a>
                 </div>
             </div>
 
@@ -29,9 +29,9 @@ const Main = () => {
                             return (
                                 <div key={key} className='postsSectionContainer'>
                                     <section className='votingSection'>
-                                        <button ><i class="fa-solid fa-arrow-up"></i></button>
+                                        <button ><i className="fa-solid fa-arrow-up"></i></button>
                                         {post.votes}
-                                        <button><i class="fa-solid fa-arrow-down"></i></button>
+                                        <button><i className="fa-solid fa-arrow-down"></i></button>
                                     </section>
                                     <section className="post">
                                         <h3> {post.username} </h3>

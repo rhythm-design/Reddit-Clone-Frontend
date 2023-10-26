@@ -1,8 +1,18 @@
 import { useNavigate } from "react-router-dom"
 import "./../css/Register.css"
 
+import axios from 'axios'
+
 const Register = () => {
     const navigate = useNavigate()
+
+    const getRequestServer = async (e) => {
+        e.preventDefault()
+        console.log('api called')
+        await axios.get("http://localhost:8080/register").then((res)=>console.log(res.data))
+            .catch((err)=>console.log(err))
+    }
+
     return (
         <main>
 
@@ -18,7 +28,7 @@ const Register = () => {
                 <input type="text" placeholder="Username" />
                 <input type="password" placeholder="Password" />
 
-                <button type="submit"> Register..</button>
+                <button type="submit" onClick={(e) => getRequestServer(e)}> Register..</button>
 
                 <span> Already a Registered User ??  <a onClick={()=>navigate("/login")}> Login </a></span>
 
