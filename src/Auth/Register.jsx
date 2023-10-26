@@ -2,15 +2,38 @@ import { useNavigate } from "react-router-dom"
 import "./../css/Register.css"
 
 import axios from 'axios'
+import {useState} from "react";
 
 const Register = () => {
     const navigate = useNavigate()
 
+    const [inputUser, setInputUser] = useState({})
+
+    const [username , setUsername] = useState("")
+    const [email , setEmail] = useState("")
+    const [password , setPassword] = useState("")
+
+
     const getRequestServer = async (e) => {
         e.preventDefault()
-        console.log('api called')
-        await axios.get("http://localhost:8080/register").then((res)=>console.log(res.data))
+        console.log('get request to get the model')
+        await axios.get("http://localhost:8080/register").then((res)=>{console.log(res.data)
+            setInputUser(res.data)})
             .catch((err)=>console.log(err))
+
+
+
+        inputUser.email = email
+        inputUser.password = password
+        inputUser.username = username
+
+        console.log("post request to send register user details ",inputUser)
+
+        console.log("***********************")
+
+        await  axios.post("http://localhost:8080/register", inputUser).then((res)=>console.log(res))
+            .catch((err)=>console.log(err))
+
     }
 
     return (
@@ -24,9 +47,9 @@ const Register = () => {
                 </div>
                 
                 
-                <input type="email" placeholder="Email" />
-                <input type="text" placeholder="Username" />
-                <input type="password" placeholder="Password" />
+                <input type="email" name="email" onChange={(e)=>setEmail(e.target.value)} placeholder="Email" />
+                <input type="text" name="username" onChange={(e)=>setUsername(e.target.value)}  placeholder="Username" />
+                <input type="password" name="password" onChange={(e)=>setPassword(e.target.value)}  placeholder="Password" />
 
                 <button type="submit" onClick={(e) => getRequestServer(e)}> Register..</button>
 
