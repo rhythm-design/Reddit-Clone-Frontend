@@ -1,6 +1,9 @@
+import { useNavigate } from "react-router-dom"
 import "./../css/Header.css"
 
 const Header = () => {
+    const navigate = useNavigate()
+
     return (
         <header>
             <div className="headings">
@@ -24,7 +27,8 @@ const Header = () => {
             </ul>
 
             <div className="loggedInUserSection">
-                <h2>Login</h2>
+                <button onClick={() => navigate("/register")}>Register</button>
+                <button onClick={() => navigate("/login")}>Login</button>
             </div>
 
         </header>

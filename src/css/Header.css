@@ -76,13 +76,13 @@ img{
 
 .loggedInUserSection {
     /* border :solid red; */
-    border : 0.5px  solid white;
+    /* border : 0.5px  solid white; */
 
     display: flex;
     
     width: 10%;
     
-    justify-content: center;
+    justify-content: space-evenly;
 
 }
 
@@ -90,4 +90,14 @@ img{
     cursor : pointer;
     box-shadow: 1px 1px 1px white;
     border-width: 2px;
+}
+
+.loggedInUserSection > button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 4vh;
+    width: 3vw;
+
+    
 }
