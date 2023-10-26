@@ -1,0 +1,93 @@
+*{
+    padding: 0;
+    margin : 0;
+}
+
+header{
+    display : flex;
+    height : 6vh;
+    flex-direction: row;
+
+    justify-content: space-between;
+    align-items: center;
+
+    background-color: #1A1A1B;
+    overflow: hidden;
+}
+
+.headings{
+    display: flex;
+    flex-direction: row;
+
+    align-items: center;
+    /* width : %; */
+
+    justify-content: space-between;
+}
+
+img{
+    display: flex;
+    height: 8vh;
+    width : 4vw;
+}
+
+
+.searchSection > input {
+    display: flex;
+
+    width : 30vw;
+    height: 5vh;
+
+    align-items: center;
+    box-sizing: border-box;
+    background-color: #272729;
+    border: 1px solid #272729;
+    border-radius: 1.25em;
+    box-shadow: none;
+    height: 40px;
+
+    color: white; 
+    caret-color: white; /* Cursor color */
+
+    font-size : 1rem;
+    align-items: center;
+    justify-content: center;
+    
+    padding: 1vh;
+}
+
+
+.headerOptions {
+    display : flex;
+    flex-direction: row;
+    /* border : solid cyan; */
+    width : 20%;
+    height: 10%;
+
+    justify-content: space-between;
+}
+
+.headerOptions > li {
+    text-decoration: none;
+    list-style: none;
+
+}
+
+
+.loggedInUserSection {
+    /* border :solid red; */
+    border : 0.5px  solid white;
+
+    display: flex;
+    
+    width: 10%;
+    
+    justify-content: center;
+
+}
+
+.loggedInUserSection:hover, .searchSection:hover, .headings:hover, .headerOptions > input:hover {
+    cursor : pointer;
+    box-shadow: 1px 1px 1px white;
+    border-width: 2px;
+}
