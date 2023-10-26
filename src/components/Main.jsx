@@ -6,19 +6,20 @@ import './../css/Main.css'
 
 const Main = () => {
 
-    const [postInfo,setPostInfo] = useState([])
+    const [postInfo, setPostInfo] = useState([])
 
-    useEffect(()=>setPostInfo(postData),[])
+    useEffect(() => setPostInfo(postData), [])
 
     return (
         <main>
-            
-            <div className="CreatePostSection"> 
+            <div className="CreatePostSection">
                 <img src="https://www.logo.wine/a/logo/Reddit/Reddit-Vertical-White-Dark-Background-Logo.wine.svg" alt="Reddit Logo">
                 </img>
-                <input placeholder="Create Post"/>
-                <a>Upload Img</a>
-                <a>Upload Link</a>
+                <input placeholder="Create Post" />
+                <div className='createPostOptions'>
+                    <a><i class="fa-solid fa-image"></i></a>
+                    <a><i class="fa-solid fa-link"></i></a>
+                </div>
             </div>
 
             <section>
@@ -26,17 +27,20 @@ const Main = () => {
                     {
                         postInfo.map((post, key) => {
                             return (
-                                <div key = {key} className="post">
-                                    <h3> {post.username} </h3>
-                                    <h1 > {post.title} </h1>
-                                    <h4> {post.excerpt} </h4>
-                                    <img src={post.imageLink} alt="Reddit Logo">
-                                    </img>
+                                <div key={key} >
+                                    
+                                    <section className="post">
+                                        <h3> {post.username} </h3>
+                                        <h1 > {post.title} </h1>
+                                        <h4> {post.excerpt} </h4>
+                                        <img src={post.imageLink} alt="Reddit Logo">
+                                        </img>
 
-                                    <div className="postButtons">
-                                        <button>Comments</button>
-                                        <button>Save</button>
-                                    </div>
+                                        <div className="postButtons">
+                                            <button>Comments</button>
+                                            <button>Save</button>
+                                        </div>
+                                    </section>
                                 </div>
                             )
                         })
@@ -45,8 +49,9 @@ const Main = () => {
             </section>
 
 
+
         </main>
-    )   
+    )
 }
 
 export default Main

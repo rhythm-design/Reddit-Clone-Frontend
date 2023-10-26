@@ -2,7 +2,7 @@
 
 main {
     display : flex;
-    width : 100vw;
+    /* width : 100vw; */
 
     justify-content: center;
     align-items: center;
@@ -37,7 +37,7 @@ main {
     display: flex;
 
     height: 80%;
-    width: 50%;
+    width: 75%;
 
     justify-content: center;
     align-items: center;
@@ -62,6 +62,13 @@ main {
     padding: 1vh;
     
 
+}
+
+.createPostOptions{
+    width : 20%;
+    /* border: solid white; */
+    display: flex;
+    justify-content: space-evenly;
 }
 
 

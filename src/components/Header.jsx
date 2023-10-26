@@ -1,38 +1,52 @@
 import { useNavigate } from "react-router-dom"
 import "./../css/Header.css"
 
-const Header = () => {
+const Header = ({ showHeaderOptions }) => {
     const navigate = useNavigate()
 
     return (
         <header>
-            <div className="headings">
+            <div className="headings" onClick={()=>navigate("/")}>
                 <img src="https://www.logo.wine/a/logo/Reddit/Reddit-Vertical-White-Dark-Background-Logo.wine.svg" alt="Reddit Logo">
                 </img>
-                <h2> &nbsp; reddit </h2>
+                <h2>  &nbsp; <i class="fa-brands fa-reddit"></i> reddit </h2>
             </div>
-            
+
             <div className="headings">
-                Home
+                <a onClick={()=>navigate("/")}> <i class="fa-solid fa-house-chimney"></i> Home</a>
             </div>
+            {console.log("showHeaderOptions ", showHeaderOptions)}
+            {
+                showHeaderOptions ?
+                    <div className="searchSection">
+                        <input type="text" placeholder="Search Reddit.." />
+                        {/* <button><i class="fa-solid fa-magnifying-glass"></i></button> */}
+                    </div>
+                    : <span></span>
+            }
 
-            <div className="searchSection">
-                <input type="text" placeholder="Search Reddit."/>
-            </div>
+            {
+                showHeaderOptions ?
+                    <ul className="headerOptions">
+                        <li><i class="fa-solid fa-arrow-up-right-dots"></i></li>
+                        <li><i class="fa-brands fa-rocketchat"></i></li>
+                        <li><i class="fa-solid fa-plus"></i><i class="fa-brands fa-square-reddit"></i></li>
+                       
+                    </ul>
+                    : <span></span>
+            }
 
-            <ul className="headerOptions">
-                <li>Popular</li>
-                <li>Chat</li>
-                <li>Create</li>
-            </ul>
-
-            <div className="loggedInUserSection">
-                <button onClick={() => navigate("/register")}>Register</button>
-                <button onClick={() => navigate("/login")}>Login</button>
-            </div>
+            {
+                showHeaderOptions ?
+                    <div className="loggedInUserSection">
+                        <button onClick={() => navigate("/register")}>Register</button>
+                        <button onClick={() => navigate("/login")}> <i class="fa-solid fa-right-to-bracket"></i> &nbsp; Login </button>
+                    </div>
+                    : <span></span>
+            }
 
         </header>
-    )   
+    )
 }
 
 export default Header

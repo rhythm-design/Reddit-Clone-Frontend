@@ -31,6 +31,13 @@ img{
     width : 4vw;
 }
 
+.searchSection{
+    display: flex;
+    flex-direction: row;
+
+    justify-content: center;
+    align-items: center;
+}
 
 .searchSection > input {
     display: flex;
@@ -92,7 +99,7 @@ img{
     border-width: 2px;
 }
 
-.loggedInUserSection > button {
+.loggedInUserSection > button, .searchSection > button {
     display: flex;
     justify-content: center;
     align-items: center;
