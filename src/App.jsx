@@ -16,15 +16,9 @@ function App() {
     <div>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={
-            <>
-                     <Header/>
-                      <Main/>
-                      </>
-                    }
-          />
-          <Route path="/login" element={<><Login/></>}/>
-          <Route path="/register" element={<><Register/></>}/>
+          <Route path="/" element={<><Header showHeaderOptions={true}/><Main/></>}/>
+          <Route path="/login" element={<><Header showHeaderOptions={false}/><Login/></>}/>
+          <Route path="/register" element={<><Header showHeaderOptions={false}/><Register/></>}/>
         </Routes>
       </BrowserRouter>
 
