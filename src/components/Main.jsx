@@ -1,6 +1,8 @@
-// import "./Main.css"
+
 import postData from './../data/demoPost.json'
 import { useState, useEffect } from "react"
+
+import './../css/Main.css'
 
 const Main = () => {
 

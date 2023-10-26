@@ -1,0 +1,153 @@
+
+
+main {
+    display : flex;
+    width : 100vw;
+
+    justify-content: center;
+    align-items: center;
+
+    flex-direction: column;
+}
+
+.CreatePostSection{
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    width : 40vw;
+    height: 7vh;
+    
+    margin : 2%;
+
+    border : solid white;
+    overflow: hidden;
+
+
+    box-sizing: border-box;
+    background-color: #1A1A1B;   
+    border: 1px solid #272729;  
+    /* border-radius: 1.25em; */
+    box-shadow: none;
+
+}
+
+.CreatePostSection > input {
+    display: flex;
+
+    height: 80%;
+    width: 50%;
+
+    justify-content: center;
+    align-items: center;
+
+
+    align-items: center;
+    box-sizing: border-box;
+    background-color: #272729;
+    border: 1px solid #272729;
+    border-radius: 1.25em;
+    box-shadow: none;
+
+
+
+    color: white; 
+    caret-color: white; /* Cursor color */
+
+    font-size : 1rem;
+    align-items: center;
+    justify-content: center;
+    
+    padding: 1vh;
+    
+
+}
+
+
+
+/* **********************************
+AllPosts Section... */
+
+
+.PostsSection{
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+
+    width : 40vw;
+    /* height: 7vh; */
+    
+    margin : 2%;
+
+    /* border : solid white; */
+    overflow: hidden;
+
+
+    box-sizing: border-box;
+    /* background-color: #1A1A1B;    */
+    /* border: 1px solid #272729;   */
+    /* border-radius: 1.25em; */
+    box-shadow: none;
+
+}
+
+
+
+/* **************************
+*/
+
+.post {
+    display: flex;
+    flex-direction: column;
+    border :0.5px solid white;
+
+    margin : 2%;
+    background-color: #1A1A1B;   
+
+    justify-content: center;
+    align-items: center;
+
+
+}
+
+.post > h3 {
+    /* margin-left : 80%; */
+}
+
+.post > h1 {
+    margin : 2%;
+}
+
+.post > h4{
+    /* border :1px solid white; */
+    margin: 2%;
+}
+
+.post > img {
+    height : 70%;
+    width : 80%;
+}
+
+.postButtons {
+    /* border : solid red; */
+
+    display: flex;
+    flex-direction: row;
+
+    /* height: 40%; */
+    height : 10vh;
+    width : 80%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.postButtons > button {
+    height : 30%;
+    width : 40%;
+
+    
+     
+}
