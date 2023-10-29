@@ -1,26 +1,31 @@
+import CreatePost from "../Posts/CreatePost"
+
 const Posts = () => {
     return (
         <>
 
             <div class="w-2/3">
                 <div class="py-2">
+
+                    <CreatePost/>
+
                     <div class="flex border border-grey-light-alt hover:border-grey rounded bg-white cursor-pointer">
-                        
+
                         {/* Voting SEction */}
                         <div class="w-1/12 flex flex-col text-center pt-2">
-                                <button class="text-xs">
-                                    <svg class="w-5 fill-current text-grey" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M7 10v8h6v-8h5l-8-8-8 8h5z" /></svg>
-                                </button>
-                                <span class="text-xs font-semibold my-1">20k</span>
-                                <button class="text-xs">
-                                    <svg class="w-5 fill-current text-grey" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M7 10V2h6v8h5l-8 8-8-8h5z" /></svg>
-                                </button>
+                            <button class="text-xs">
+                                <svg class="w-5 fill-current text-grey" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M7 10v8h6v-8h5l-8-8-8 8h5z" /></svg>
+                            </button>
+                            <span class="text-xs font-semibold my-1">20k</span>
+                            <button class="text-xs">
+                                <svg class="w-5 fill-current text-grey" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M7 10V2h6v8h5l-8 8-8-8h5z" /></svg>
+                            </button>
                         </div>
 
                         {/* Main sEction */}
 
                         <div class="w-11/12 pt-2">
-                            
+
                             <div class="flex items-center text-xs mb-2">
                                 <a href="#" class="font-semibold no-underline hover:underline text-black flex items-center">
                                     <img class="rounded-full border h-5 w-5" src="https://avatars0.githubusercontent.com/u/30317862?s=200&v=4" />
