@@ -9,7 +9,9 @@ const CreatePostPage = () => {
             <Header />
 
             <CreatePostForm />
+           
         </>
+
     )
 }
 export default CreatePostPage

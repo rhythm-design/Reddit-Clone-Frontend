@@ -13,10 +13,12 @@ const CreatePostForm = () => {
     const dropboxCommunity = {
         dropdownContainer: {
             position: 'relative',
+            // display : "block"
         },
         communityDropdown: {
             display: 'none',
             position: 'absolute',
+            flexDirection  :"column",
             backgroundColor: '#f9f9f9',
             boxShadow: '0px 8px 16px 0px rgba(0,0,0,0.2)',
             minWidth: '160px',
@@ -38,10 +40,13 @@ const CreatePostForm = () => {
     return (
         <main>
             <form>
+                <h1>Create Post...</h1>
+
                 <input
                     style={dropboxCommunity.dropdownInput}
-                    type="text"
-                    placeholder="Search for communities"
+                    type="dropbox"
+                    placeholder="Choose a community &nbsp; &nbsp; v"
+                    id = "communitiesDropbox"
                 />
                 <div style={dropboxCommunity.communityDropdown}>
                     <a style={dropboxCommunity.communityDropdownLink} href="#">
@@ -53,11 +58,10 @@ const CreatePostForm = () => {
                     <a style={dropboxCommunity.communityDropdownLink} href="#">
                         Community 3
                     </a>
-                    {/* Add more communities as needed */}
                 </div>
 
                 <div className="headings">
-                    <h2 onClick={() => setFormType("default")}> &nbsp; Create Reddit Post </h2>
+                    <h2 onClick={() => setFormType("default")}> &nbsp; Post </h2>
                     <h2 onClick={() => setFormType("image")}> &nbsp; Upload Image </h2>
                     <h2 onClick={() => setFormType("link")}> &nbsp; Upload Link  </h2>
                 </div>
