@@ -1,6 +1,15 @@
+import { useEffect } from "react";
 import "./CreatePost.css"
 
+import { useState } from "react";
+
 const CreatePostForm = () => {
+    const [formType, setFormType] = useState("default")
+
+    useEffect(()=>{
+        console.log("reload...")
+    }, [formType])
+
     const dropboxCommunity = {
         dropdownContainer: {
             position: 'relative',
@@ -22,6 +31,8 @@ const CreatePostForm = () => {
             display: 'block',
         },
     };
+
+
 
 
     return (
@@ -46,14 +57,30 @@ const CreatePostForm = () => {
                 </div>
 
                 <div className="headings">
-                    <h2> &nbsp; Create Reddit Post </h2>
-                    <h2> &nbsp; Upload Image </h2>
-                    <h2> &nbsp; Upload Link  </h2>
+                    <h2 onClick={() => setFormType("default")}> &nbsp; Create Reddit Post </h2>
+                    <h2 onClick={() => setFormType("image")}> &nbsp; Upload Image </h2>
+                    <h2 onClick={() => setFormType("link")}> &nbsp; Upload Link  </h2>
                 </div>
 
                 <input type="text" name="postTitle" onChange={(e) => setPostTitle(e.target.value)} placeholder="Post Title..." />
-                <input type="text" name="postContent" onChange={(e) => setPostContent(e.target.value)} placeholder="Post Content" />
-                <input type="url" name="imageUrl" onChange={(e) => setPostUrl(e.target.value)} placeholder="Post URL..." />
+                {
+                    (formType === 'default')
+                        ?
+                        <>
+                            <input type="text" name="postContent" onChange={(e) => setPostContent(e.target.value)} placeholder="Post Content" />
+                            <input type="url" name="imageUrl" onChange={(e) => setPostUrl(e.target.value)} placeholder="Post URL..." />
+                        </>
+                        :
+                        (formType === 'image')
+                            ?
+                            <>
+                                <input type="file" name="image" />
+                            </>
+                            :
+                            <>
+                                <input type="url" name="link" placeholder="enter link" />
+                            </>
+                }
 
                 <button type="submit" onClick={(e) => getRequestServer(e)}> Register..</button>
             </form>
