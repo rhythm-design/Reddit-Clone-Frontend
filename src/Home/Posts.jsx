@@ -1,4 +1,4 @@
-import CreatePost from "../Posts/CreatePost"
+import CreatePost from "../Posts/CreatePostSection"
 
 const Posts = () => {
     return (

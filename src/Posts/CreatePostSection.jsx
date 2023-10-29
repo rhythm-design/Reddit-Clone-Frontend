@@ -1,7 +1,9 @@
+import { useNavigate } from "react-router-dom";
 import "./CreatePost.css"
 
 
 const CreatePost = () => {
+    const navigate = useNavigate()
     return (
         <>
             <div class="flex border border-grey-light-alt hover:border-grey rounded bg-white cursor-pointer mb-5">
