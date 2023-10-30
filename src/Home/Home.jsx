@@ -17,7 +17,11 @@ const Home = () => {
                     <div class="container mx-auto">
                         <div class="flex w-960 mx-auto">
                             <LeftSection />
-                            <Posts />
+                            <div class="w-2/3 m-8">
+                                <div class="py-2">
+                                    <Posts />
+                                </div>
+                            </div>
                             <RightSection />
                         </div>
                     </div>
