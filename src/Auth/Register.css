@@ -27,12 +27,12 @@ form > input, form > button {
 
     padding: 1vh;
 }
-
+/* 
 a:hover, button:hover, input:hover{
     cursor : pointer;
     box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1);
     border-width: 2px;
-}
+} */
 
 
 
@@ -41,8 +41,8 @@ a:hover, button:hover, input:hover{
     margin : 5%;
 }
 
-form:hover {
+/* form:hover {
     cursor : pointer;
     box-shadow: 1px 1px 1px white;
     border-width: 2px;
-}
+} */

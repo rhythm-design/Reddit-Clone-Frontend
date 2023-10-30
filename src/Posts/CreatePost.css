@@ -130,11 +130,11 @@ form > input, form > button {
     width: 32% !important; 
 }
 
-a:hover, button:hover, input:hover{
+/* a:hover, button:hover, input:hover{
     cursor : pointer;
     box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1);
     border-width: 2px;
-}
+} */
 
 
 
@@ -143,12 +143,12 @@ a:hover, button:hover, input:hover{
     margin : 5%;
 }
 
-form:hover, .headings > h2:hover {
+/* form:hover, .headings > h2:hover {
     cursor : pointer;
     box-shadow: 1px 1px 1px white;
     border-width: 2px;
     border-color: black;;
-}
+} */
 
 .headings {
     display: flex;

@@ -4,36 +4,31 @@ import "./Register.css"
 import axios from 'axios'
 import { useState } from "react";
 import api from "../api";
+import {toast} from 'react-toastify';
+
 const Register = () => {
     const navigate = useNavigate()
-
-    const [inputUser, setInputUser] = useState({})
 
     const [username, setUsername] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
 
 
-    const getRequestServer = async (e) => {
+    const getRequestServer = (e) => {
         e.preventDefault()
-        console.log('get request to get the model')
-        await axios.get("http://localhost:8080/register").then((res) => {
-            console.log(res.data)
-            setInputUser(res.data)
+        const userDetails = {
+            'username': username,
+            'email': email,
+            'password': password 
+        }
+
+        api.post("/register", userDetails).then((res) => {
+            toast.success("Successfully Registered User")
+            setUsername("");
+            setPassword("");
+            setEmail("");
         })
-            .catch((err) => console.log(err))
-
-
-        inputUser.email = email
-        inputUser.password = password
-        inputUser.username = username
-
-        console.log("post request to send register user details ", inputUser)
-
-        console.log("***********************")
-
-        await api.post("/register", inputUser).then((res) => console.log(res))
-            .catch((err) => console.log(err))
+            .catch((err) => toast.warn(err))
 
     }
 
