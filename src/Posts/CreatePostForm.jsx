@@ -2,63 +2,60 @@ import { useEffect } from "react";
 import "./CreatePost.css"
 
 import { useState } from "react";
+import CommunitiesDropdown from "./CommunitiesDropdown";
+import api from "../api";
 
 const CreatePostForm = () => {
     const [formType, setFormType] = useState("default")
+    const [selectedCommunity, setSelectedCommunity] = useState('')
 
-    useEffect(()=>{
+    const [postTitle, setPostTitle] = useState('')
+    const [postContent, setPostContent] = useState('')
+    const [imagePost, setImagePost] = useState('')
+    const [postUrl, setPostUrl] = useState('')
+    const [isDraft, setIsDraft] = useState(false)
+
+    // "isDraft" : "false",
+    // "subredditId" : "1",
+    // "voteCount" : "23",
+    // "category" : "Sports"
+
+    useEffect(() => {
         console.log("reload...")
+        console.log(selectedCommunity)
     }, [formType])
 
-    const dropboxCommunity = {
-        dropdownContainer: {
-            position: 'relative',
-            // display : "block"
-        },
-        communityDropdown: {
-            display: 'none',
-            position: 'absolute',
-            flexDirection  :"column",
-            backgroundColor: '#f9f9f9',
-            boxShadow: '0px 8px 16px 0px rgba(0,0,0,0.2)',
-            minWidth: '160px',
-            zIndex: '1',
-        },
-        communityDropdownLink: {
-            padding: '12px 16px',
-            textDecoration: 'none',
-            display: 'block',
-        },
-        dropdownInputFocus: {
-            display: 'block',
-        },
-    };
+    const submitForm =async (e) => {
+        e.preventDefault()
+        const requestBody = {
+            postTitle: postTitle,
+            postContent: postContent,
+            postUrl: postUrl,
+            isDraft: isDraft,
+            category: "Sports",
+            subredditId : "1"
+        }
+
+        
+
+        console.log(requestBody)
+        await api.post("/create", requestBody)
+            .then((res)=>{ console.log(res) })
+            .catch((err) => { console.log(err) })
+        
+    }
+
+
 
 
 
 
     return (
         <main>
+            <CommunitiesDropdown selectedCommunity={selectedCommunity} setSelectedCommunity={setSelectedCommunity} />
             <form>
+                <input type="hidden" name="community" value={selectedCommunity} />
                 <h1>Create Post...</h1>
-
-                <input
-                    style={dropboxCommunity.dropdownInput}
-                    type="dropbox"
-                    placeholder="Choose a community &nbsp; &nbsp; v"
-                    id = "communitiesDropbox"
-                />
-                <div style={dropboxCommunity.communityDropdown}>
-                    <a style={dropboxCommunity.communityDropdownLink} href="#">
-                        Community 1
-                    </a>
-                    <a style={dropboxCommunity.communityDropdownLink} href="#">
-                        Community 2
-                    </a>
-                    <a style={dropboxCommunity.communityDropdownLink} href="#">
-                        Community 3
-                    </a>
-                </div>
 
                 <div className="headings">
                     <h2 onClick={() => setFormType("default")}> &nbsp; Post </h2>
@@ -72,21 +69,35 @@ const CreatePostForm = () => {
                         ?
                         <>
                             <input type="text" name="postContent" onChange={(e) => setPostContent(e.target.value)} placeholder="Post Content" />
-                            <input type="url" name="imageUrl" onChange={(e) => setPostUrl(e.target.value)} placeholder="Post URL..." />
+
                         </>
                         :
                         (formType === 'image')
                             ?
                             <>
-                                <input type="file" name="image" />
+                                <input type="file" name="postImage" onChange={(e) => setImagePost(e.target.files[0])} />
                             </>
                             :
                             <>
-                                <input type="url" name="link" placeholder="enter link" />
+                                <input type="url" name="imageUrl" onChange={(e) => setPostUrl(e.target.value)} placeholder="Post URL..." />
                             </>
                 }
 
-                <button type="submit" onClick={(e) => getRequestServer(e)}> Register..</button>
+                <div>
+                    <label>
+                        <input
+                            type="radio"
+                            value="option1"
+
+                            checked={isDraft}
+                            onChange={() => { setIsDraft(!isDraft) }}
+                        />
+                        &nbsp;isDraft ?
+                    </label>
+                </div>
+
+
+                <button type="submit" onClick={(e) => submitForm(e)}> Create Post..</button>
             </form>
         </main>
     )

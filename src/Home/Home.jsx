@@ -5,6 +5,7 @@ import RightSection from "./RightSection";
 import Posts from "./Posts";
 import Header from "./Header";
 import PostOptions from "./PostOptions";
+import CreatePost from "../Posts/CreatePostSection";
 
 
 const Home = () => {
@@ -17,6 +18,7 @@ const Home = () => {
                     <div class="container mx-auto">
                         <div class="flex w-960 mx-auto">
                             <LeftSection />
+                            
                             <div class="w-2/3 m-8">
                                 <div class="py-2">
                                     <Posts />
