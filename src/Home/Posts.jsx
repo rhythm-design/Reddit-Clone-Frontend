@@ -114,6 +114,15 @@ const Posts = () => {
             {isModalOpen && (
                 <PostModal post={selectedPost} onClose={closeModal} />
             )}
+                            </div>
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+            </div>
         </>
     )
 }
