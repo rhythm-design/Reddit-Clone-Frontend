@@ -1,22 +1,28 @@
 import { useEffect, useState } from "react"
 import api from "../api"
+import PostModal from "./PostModal"
 
 const Posts = () => {
     const[posts, setPosts] = useState([])
-    const[upvote,setUpvote] = useState({})
+    const [selectedPost, setSelectedPost] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
     
-      // Function to update the value of a specific key
-    //   const updateValue = () => {
-    //     setYourObject((prevState) => ({
-    //       ...prevState, // Spread the previous state
-    //       keyToChange: 'newUpdatedValue', // Update the value for the specific key
-    //     }));
-    //   };
     useEffect(()=>{
         api.get('/posts').then((res)=>{
             setPosts(res.data);
         }).catch((err)=>console.log(err))
-    },[]);
+    },[setPosts]);
+
+    const openModal = (post) => {
+        setSelectedPost(post);
+        setIsModalOpen(true);
+      };
+    
+      const closeModal = () => {
+        setSelectedPost(null);
+        setIsModalOpen(false);
+      };
+    
 
 
 
@@ -65,16 +71,17 @@ const Posts = () => {
                             <div class="flex items-center text-xs mb-2">
                                 <a href="#" class="font-semibold no-underline hover:underline text-black flex items-center">
                                     <img class="rounded-full border h-5 w-5" src="https://avatars0.githubusercontent.com/u/30317862?s=200&v=4" />
-                                    <span class="ml-2">r/tailwind</span>
+                                    <span class="ml-2">r/rhythmvarshney</span>
                                 </a>
                                 <span class="text-grey-light mx-1 text-xxs">•</span>
                                 <span class="text-grey">Posted by</span>
-                                <a href="#" class="text-grey mx-1 no-underline hover:underline">u/TestUser</a>
+                                <a href="#" class="text-grey mx-1 no-underline hover:underline">u/rhythm</a>
                                 <span class="text-grey">2 hours ago</span>
                             </div>
                             <div>
                                 <h2 class="text-lg font-medium mb-1">{post.postTitle}</h2>
                                 <p class="mb-1" style={{color: '#1c1c1c'}}>{post.postContent}</p>
+                                <p class="mb-1" style={{color: '#1c1c1c'}}>{post.id}</p>
                                 <img src="https://www.cricbuzz.com/a/img/v1/595x396/i1/c357076/rohit-led-from-the-front-with.jpg"></img>
                             </div>
 
@@ -95,12 +102,18 @@ const Posts = () => {
                                 <div class="flex hover:bg-grey-lighter p-1 ml-2 rotate-90">
                                     <svg class="w-4 fill-current text-grey" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M10 12a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0-6a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 12a2 2 0 1 1 0-4 2 2 0 0 1 0 4z" /></svg>
                                 </div>
+                                <div class="flex hover:bg-grey-lighter p-1 ml-2">
+                                    <button onClick={() => openModal(post)}>View Post</button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 )
                })
             }
+            {isModalOpen && (
+                <PostModal post={selectedPost} onClose={closeModal} />
+            )}
         </>
     )
 }
