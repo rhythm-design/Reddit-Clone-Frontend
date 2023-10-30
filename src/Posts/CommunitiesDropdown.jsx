@@ -1,11 +1,16 @@
-import React, { useState } from 'react';
-import './CommunitiesDropdown.css';
+import React, { useEffect, useState } from 'react'
+import './CommunitiesDropdown.css'
+import api from "../api"
 
-const CommunitiesDropdown = () => {
+const CommunitiesDropdown = ({ selectedCommunity, setSelectedCommunity }) => {
   const [dropdownVisible, setDropdownVisible] = useState(false);
   const [filterText, setFilterText] = useState('');
-  const [communities, setCommunities] = useState([])
+  const [communities, setCommunities] = useState()
+  const [showCommunity, setShowCommunity] = useState(false)
 
+  useEffect(() => {
+    listCommunities()
+  }, [])
 
 
   const toggleDropdown = (event) => {
@@ -18,28 +23,46 @@ const CommunitiesDropdown = () => {
   };
 
 
+  const listCommunities = () => {
+    api.get("/subreddit/subreddit")
+      .then((res) => { console.log(res); setCommunities(res.data) })
+      .catch((err) => { })
+  };
+
 
 
   return (
     <>
-      <div className="dropdown" onClick={(e) => e.stopPropagation()}>
-        <button onClick={toggleDropdown} className="dropbtn">
-          Choose a community
-        </button>
-        <div id="myDropdown" className={`dropdown-content ${dropdownVisible ? 'show' : ''}`}>
+      {
+        showCommunity ?
+          <div className="dropdown" onClick={(e) => e.stopPropagation()}>
+            <button onClick={toggleDropdown} className="dropbtn" onClick={()=>setShowCommunity(false)}>
+              {selectedCommunity}
+            </button>
+          </div>
+          :
+          <div className="dropdown" onClick={(e) => e.stopPropagation()}>
+            <button onClick={toggleDropdown} className="dropbtn">
+              Choose a community
+            </button>
+            <div id="myDropdown" className={`dropdown-content ${dropdownVisible ? 'show' : ''}`}>
 
-          
+              {
+                communities ?
+                  communities.map((com, key) => {
+                    return (
+                      <>
+                        <p onClick={(e) => { setSelectedCommunity(com.name); toggleDropdown(e); setShowCommunity(true) }}>{com.name}</p>
+                      </>
+                    )
+                  }) :
+                  <p>Loading.....</p>
+              }
 
+            </div>
+          </div>
+      }
 
-          {/* <p href="#about">About</p>
-              <p href="#base">Base</p>
-              <p href="#blog">Blog</p>
-              <p href="#contact">Contact</p>
-              <p href="#custom">Custom</p>
-              <p href="#support">Support</p>
-              <p href="#tools">Tools</p> */}
-        </div>
-      </div>
     </>
   );
 };

@@ -38,8 +38,11 @@ const PostModal = ({ post, onClose }) => {
                                 <p class="mb-1" style={{color: '#1c1c1c'}}>{post.postContent}</p>
                                 <p class="mb-1" style={{color: '#1c1c1c'}}>{post.id}</p>
                                 <img src="https://www.cricbuzz.com/a/img/v1/595x396/i1/c357076/rohit-led-from-the-front-with.jpg"></img>
-                                <p>{post.comments}</p>
+                                {/* <p>{post.comments}</p> */}
                             </div>
+
+                            <button onClick={onClose}> Close... </button>
+
                         </div>
                     </div>
             </div>
