@@ -1,4 +1,7 @@
+import { useNavigate } from "react-router-dom"
+
 const RightSection = () => {
+    const navigate = useNavigate()
     return (
         <>
             <div class="w-1/3 ml-5">
@@ -16,8 +19,16 @@ const RightSection = () => {
                                     <span class="text-lg ml-4 mt-6">r/popular</span>
                                 </div>
                                 <p class="font-normal mb-3 text-sm leading-normal">The best posts on Reddit for you, pulled from the most active communities on Reddit. Check here to see the most shared, upvoted, and commented content on the internet.</p>
-                                <button class="bg-blue-dark text-sm text-white font-semibold rounded px-4 py-2 w-full">CREATE POST</button>
                             </div>
+                            <button style={{
+                                display : "flex",
+                                justifyContent: "center",
+                                alignItems: "center",
+                                border : "solid grey",
+                                borderWidth : "0.2 em",
+                                width : "100%",
+                                padding : "1vh 1vw"
+                            }} onClick={()=>{navigate("/create/community")}}>Create Community</button>
                         </div>
                     </div>
                    
