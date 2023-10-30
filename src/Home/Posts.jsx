@@ -84,7 +84,7 @@ const Posts = () => {
                                     <h2 class="text-lg font-medium mb-1">{post.postTitle}</h2>
                                     <p class="mb-1" style={{ color: '#1c1c1c' }}>{post.postContent}</p>
                                     <p class="mb-1" style={{ color: '#1c1c1c' }}>{post.id}</p>
-                                    <img style={{ width: '100% !important' }} src={post.postUrl}></img>
+                                    <img style={{ width: '100% !important' }} src="https://www.cricbuzz.com/a/img/v1/980x654/i1/c357174/jasprit-bumrah-and-mohammed-sh.jpg"></img>
                                 </div>
 
 

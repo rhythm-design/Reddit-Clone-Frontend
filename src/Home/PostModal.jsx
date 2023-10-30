@@ -1,23 +1,47 @@
-import React from "react";
-import "./PostModal.css"
+import React, { useRef } from "react";
+import "./PostModal.css";
 
 const PostModal = ({ post, onClose }) => {
+  const modalContentRef = useRef(null);
+
+  const handleScroll = (e) => {
+    // Check if the modal content has reached the bottom, then you can fetch more content if needed.
+    if (
+      modalContentRef.current.scrollHeight - modalContentRef.current.scrollTop ===
+      modalContentRef.current.clientHeight
+    ) {
+      // Load more content or perform any other action.
+    }
+  };
+
   return (
-    <div className="modal-container">
-        <div className="modal">
-            <div className="modal-content">
-            <div class="flex border border-grey-light-alt hover:border-grey rounded bg-white cursor-pointer mb-4">
-                        
-                        {/* Voting SEction */}
-                        <div class="w-1/12 flex flex-col text-center pt-2">
-                            <button class="text-xs" onClick={() => handleVote(post,1)}>
-                                <svg class="w-5 fill-current text-grey" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M7 10v8h6v-8h5l-8-8-8 8h5z" /></svg>
-                            </button>
-                            <span class="text-xs font-semibold my-1">{post.voteCount}</span>
-                            <button class="text-xs" onClick={() => handleVote(post,-1)}>
-                                <svg class="w-5 fill-current text-grey" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M7 10V2h6v8h5l-8 8-8-8h5z" /></svg>
-                            </button>
-                        </div>
+    <div className="modal-container flex justify-content">
+      <div className="modal">
+        <div className="modal-content" ref={modalContentRef} onScroll={handleScroll}>
+        <button onClick={onClose} className="text-xs mt-4 float-right absolute-sticky">Close</button>
+          <div className="flex justify-items-center border border-grey-light-alt hover:border-grey rounded bg-white cursor-pointer mb-4">
+            {/* Voting Section */}
+            <div className="w-1/12 flex flex-col text-center pt-2">
+              <button className="text-xs" onClick={() => handleVote(post, 1)}>
+                <svg
+                  className="w-5 fill-current text-grey"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                >
+                  <path d="M7 10v8h6v-8h5l-8-8-8 8h5z" />
+                </svg>
+              </button>
+              <span className="text-xs font-semibold my-1">{post.voteCount}</span>
+              <button className="text-xs" onClick={() => handleVote(post, -1)}>
+                <svg
+                  className="w-5 fill-current text-grey"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                >
+                  <path d="M7 10V2h6v8h5l-8 8-8-8h5z" />
+                </svg>
+              </button>
+            </div>
 
                         {/* Main sEction */}
 
@@ -38,11 +62,8 @@ const PostModal = ({ post, onClose }) => {
                                 <p class="mb-1" style={{color: '#1c1c1c'}}>{post.postContent}</p>
                                 <p class="mb-1" style={{color: '#1c1c1c'}}>{post.id}</p>
                                 <img src="https://www.cricbuzz.com/a/img/v1/595x396/i1/c357076/rohit-led-from-the-front-with.jpg"></img>
-                                {/* <p>{post.comments}</p> */}
+                                <p>{post.comments}</p>
                             </div>
-
-                            <button onClick={onClose}> Close... </button>
-
                         </div>
                     </div>
             </div>
