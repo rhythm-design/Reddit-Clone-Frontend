@@ -4,8 +4,10 @@ import "./CreatePost.css"
 import { useState } from "react";
 import CommunitiesDropdown from "./CommunitiesDropdown";
 import api from "../api";
+import { useNavigate } from "react-router-dom";
 
 const CreatePostForm = () => {
+    const navigate = useNavigate()
     const [formType, setFormType] = useState("default")
     const [selectedCommunity, setSelectedCommunity] = useState('')
 
@@ -43,6 +45,9 @@ const CreatePostForm = () => {
             .then((res)=>{ console.log(res) })
             .catch((err) => { console.log(err) })
         
+        
+        navigate("/")
+        
     }
 
 
@@ -63,23 +68,23 @@ const CreatePostForm = () => {
                     <h2 onClick={() => setFormType("link")}> &nbsp; Upload Link  </h2>
                 </div>
 
-                <input type="text" name="postTitle" onChange={(e) => setPostTitle(e.target.value)} placeholder="Post Title..." />
+                <input type="text" name="postTitle" onChange={(e) => setPostTitle(e.target.value)} placeholder="Post Title..." required/>
                 {
                     (formType === 'default')
                         ?
                         <>
-                            <input type="text" name="postContent" onChange={(e) => setPostContent(e.target.value)} placeholder="Post Content" />
+                            <input type="text" name="postContent" onChange={(e) => setPostContent(e.target.value)} placeholder="Post Content" required />
 
                         </>
                         :
                         (formType === 'image')
                             ?
                             <>
-                                <input type="file" name="postImage" onChange={(e) => setImagePost(e.target.files[0])} />
+                                <input type="file" name="postImage" onChange={(e) => setImagePost(e.target.files[0])} required/>
                             </>
                             :
                             <>
-                                <input type="url" name="imageUrl" onChange={(e) => setPostUrl(e.target.value)} placeholder="Post URL..." />
+                                <input type="url" name="imageUrl" onChange={(e) => setPostUrl(e.target.value)} placeholder="Post URL..." required/>
                             </>
                 }
 

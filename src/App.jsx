@@ -5,6 +5,9 @@ import {BrowserRouter, Route, Routes} from 'react-router-dom'
 import Home from './Home/Home'
 import CreatePostPage from './Posts/CreatePostPage'
 import CreateSubredditPage from './Subreddit/CreateSubredditPage'
+import Login from './Auth/Login'
+import Register from './Auth/Register'
+import Header from './Home/Header'
 
 function App() {
 
@@ -15,6 +18,8 @@ function App() {
           <Route path="/" element={<><Home/></>} />
           <Route path="/submit" element={<><CreatePostPage/></>} />
           <Route path="/create/community" element={<><CreateSubredditPage/></>} />
+          <Route path="/login" element={<><Header showHeaderOptions={false}/><Login/></>}/>
+          <Route path="/register" element={<><Header showHeaderOptions={false}/><Register/></>}/>
         </Routes>
       </BrowserRouter>
 

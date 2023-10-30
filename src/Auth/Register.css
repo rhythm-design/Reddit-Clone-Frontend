@@ -1,0 +1,48 @@
+form {
+    margin: 5vh 5vw;
+    padding: 5vh 5vw;
+
+    display : flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    /* background-color: #1A1A1B; */
+
+}
+
+form > input, form > button {
+    height: 6vh;
+    width: 20vw;
+    margin: 2%;
+
+    font-size: 1rem;
+
+
+    align-items: center;
+    box-sizing: border-box;
+    border: 1px solid #272729;
+    border-radius: 1.25em;
+    box-shadow: none;
+
+    padding: 1vh;
+}
+
+a:hover, button:hover, input:hover{
+    cursor : pointer;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1);
+    border-width: 2px;
+}
+
+
+
+
+.headings {
+    margin : 5%;
+}
+
+form:hover {
+    cursor : pointer;
+    box-shadow: 1px 1px 1px white;
+    border-width: 2px;
+}
