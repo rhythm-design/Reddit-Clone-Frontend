@@ -80,6 +80,10 @@ main{
     justify-content: center;
     align-items: center;
 
+    flex-direction: column;
+
+    padding: 2vh 2vw;
+
 }
 
 form {

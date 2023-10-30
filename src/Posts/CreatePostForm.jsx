@@ -2,63 +2,28 @@ import { useEffect } from "react";
 import "./CreatePost.css"
 
 import { useState } from "react";
+import CommunitiesDropdown from "./CommunitiesDropdown";
 
 const CreatePostForm = () => {
     const [formType, setFormType] = useState("default")
 
-    useEffect(()=>{
+
+
+
+    useEffect(() => {
         console.log("reload...")
     }, [formType])
 
-    const dropboxCommunity = {
-        dropdownContainer: {
-            position: 'relative',
-            // display : "block"
-        },
-        communityDropdown: {
-            display: 'none',
-            position: 'absolute',
-            flexDirection  :"column",
-            backgroundColor: '#f9f9f9',
-            boxShadow: '0px 8px 16px 0px rgba(0,0,0,0.2)',
-            minWidth: '160px',
-            zIndex: '1',
-        },
-        communityDropdownLink: {
-            padding: '12px 16px',
-            textDecoration: 'none',
-            display: 'block',
-        },
-        dropdownInputFocus: {
-            display: 'block',
-        },
-    };
+    
 
 
 
 
     return (
         <main>
+            <CommunitiesDropdown/>
             <form>
                 <h1>Create Post...</h1>
-
-                <input
-                    style={dropboxCommunity.dropdownInput}
-                    type="dropbox"
-                    placeholder="Choose a community &nbsp; &nbsp; v"
-                    id = "communitiesDropbox"
-                />
-                <div style={dropboxCommunity.communityDropdown}>
-                    <a style={dropboxCommunity.communityDropdownLink} href="#">
-                        Community 1
-                    </a>
-                    <a style={dropboxCommunity.communityDropdownLink} href="#">
-                        Community 2
-                    </a>
-                    <a style={dropboxCommunity.communityDropdownLink} href="#">
-                        Community 3
-                    </a>
-                </div>
 
                 <div className="headings">
                     <h2 onClick={() => setFormType("default")}> &nbsp; Post </h2>
@@ -72,7 +37,7 @@ const CreatePostForm = () => {
                         ?
                         <>
                             <input type="text" name="postContent" onChange={(e) => setPostContent(e.target.value)} placeholder="Post Content" />
-                            <input type="url" name="imageUrl" onChange={(e) => setPostUrl(e.target.value)} placeholder="Post URL..." />
+                            
                         </>
                         :
                         (formType === 'image')
@@ -82,7 +47,7 @@ const CreatePostForm = () => {
                             </>
                             :
                             <>
-                                <input type="url" name="link" placeholder="enter link" />
+                                <input type="url" name="imageUrl" onChange={(e) => setPostUrl(e.target.value)} placeholder="Post URL..."/>
                             </>
                 }
 
