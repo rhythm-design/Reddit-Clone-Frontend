@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import api from "../api"
-import PostModal from "./PostModal"
+import PostModal from "./PostModal";
 
 const Posts = () => {
     const[posts, setPosts] = useState([])
@@ -82,7 +82,7 @@ const Posts = () => {
                                 <h2 class="text-lg font-medium mb-1">{post.postTitle}</h2>
                                 <p class="mb-1" style={{color: '#1c1c1c'}}>{post.postContent}</p>
                                 <p class="mb-1" style={{color: '#1c1c1c'}}>{post.id}</p>
-                                <img src="https://www.cricbuzz.com/a/img/v1/595x396/i1/c357076/rohit-led-from-the-front-with.jpg"></img>
+                                <img style={{width: '100% !important'}} src="https://www.cricbuzz.com/a/img/v1/595x396/i1/c357076/rohit-led-from-the-front-with.jpg"></img>
                             </div>
 
 
@@ -114,15 +114,6 @@ const Posts = () => {
             {isModalOpen && (
                 <PostModal post={selectedPost} onClose={closeModal} />
             )}
-                            </div>
-                        </div>
-
-
-                    </div>
-
-
-                </div>
-            </div>
         </>
     )
 }
