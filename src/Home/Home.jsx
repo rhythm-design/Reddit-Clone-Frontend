@@ -12,7 +12,7 @@ const Home = () => {
         <>
             <div class="flex bg-blue-lightest flex flex-col font-sans min-h-screen">
                 <Header />
-                <div class="mt-12">
+                <div class="mt-4">
                     <PostOptions />
                     <div class="container mx-auto">
                         <div class="flex w-960 mx-auto">
