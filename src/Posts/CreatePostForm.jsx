@@ -29,30 +29,23 @@ const CreatePostForm = () => {
 
     const submitForm =async (e) => {
         e.preventDefault()
-        const requestBody = {
-            postTitle: postTitle,
-            postContent: postContent,
-            postUrl: postUrl,
-            isDraft: isDraft,
-            category: "Sports",
-            subredditId : "1"
-        }
+        
+        const formData = new FormData();
+        console.log("File is: ",imagePost)
+        formData.append('post-image',imagePost);
+        formData.append("postTitle", postTitle);
+        formData.append('postContent',postContent);
+        formData.append('postUrl',postUrl);
+        formData.append('isDraft', isDraft);
+        formData.append('category', "Sports");
+        formData.append('subredditId', "1");
 
-        
+        api.post('/create', formData).then((res) => console.log("Response is: ", res))
+              .catch((err) => console.log("Error is: ",  err));
 
-        console.log(requestBody)
-        await api.post("/create", requestBody)
-            .then((res)=>{ console.log(res) })
-            .catch((err) => { console.log(err) })
-        
-        
         navigate("/")
         
     }
-
-
-
-
 
 
     return (
