@@ -22,7 +22,12 @@ const CommentsPostId = ({post}) => {
       .catch(error => console.error(error));
 
     console.log("comments", comments)
-  }, []);
+  }, [comments]);
+
+  const [reload, setReload] = useState(false)
+  useEffect(()=>{
+    console.log("reload useEffect.");
+  }, [comments])
 
   const submitCommentForPostId = async (e) => {
     e.preventDefault()
@@ -43,6 +48,8 @@ const CommentsPostId = ({post}) => {
       .catch((err) => {
         console.log(err)
       })
+
+    setReload(!reload)
 
   }
 

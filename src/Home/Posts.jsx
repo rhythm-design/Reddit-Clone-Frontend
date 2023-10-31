@@ -7,7 +7,9 @@ const Posts = () => {
     const [posts, setPosts] = useState([])
     const [selectedPost, setSelectedPost] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
-
+    useEffect(()=>{
+        
+    }, [])
     useEffect(() => {
         api.get('/posts').then((res) => {
             setPosts(res.data);

@@ -35,7 +35,7 @@ const Comment = ({ comment }) => {
         {comment.commentData}
         
         <span>
-            <input type={inputType} name="replyComment" onChange={(e)=>{setReplyMessage(e.target.value)}}/>
+            <input style={{border: '1px solid black', padding: "1vh"}} type={inputType} name="replyComment" onChange={(e)=>{setReplyMessage(e.target.value)}} placeholder='Reply here....'/>
             <button id="replyButton" onClick={(e)=>{handleReplyClick(e, comment.id)}}>Reply...</button>
           <i className="fa-solid fa-user"></i>
           &nbsp; {comment.userEmail}
