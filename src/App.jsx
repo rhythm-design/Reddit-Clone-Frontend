@@ -8,6 +8,7 @@ import CreateSubredditPage from './Subreddit/CreateSubredditPage'
 import Login from './Auth/Login'
 import Register from './Auth/Register'
 import Header from './Home/Header'
+import SearchPost from './Posts/SearchPost'
 // import { ToastContainer } from 'react-toastify';
 // import 'react-toastify/dist/ReactToastify.css';
 
@@ -23,6 +24,7 @@ function App() {
           <Route path="/create/community" element={<><CreateSubredditPage/></>} />
           <Route path="/login" element={<><Header showHeaderOptions={false}/><Login/></>}/>
           <Route path="/register" element={<><Header showHeaderOptions={false}/><Register/></>}/>
+          <Route path="/search" element={<><SearchPost/></>} />
         </Routes>
       </BrowserRouter>
 

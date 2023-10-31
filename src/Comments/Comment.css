@@ -1,0 +1,32 @@
+#commentContainer {
+    margin: 5vh 5vw;
+    padding: 2vh 2vw;
+
+    display : flex;
+    justify-content: flex-start;
+    align-items:flex-start;
+    flex-direction: column;
+
+    height: 50%;
+    width: 100%;
+
+    /* background-color: #1A1A1B; */
+
+    /* border : solid black; */
+
+    cursor : pointer;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1);
+    border-width: 2px;
+}
+
+#replyButton {
+    display : flex;
+    margin : 1vh;
+    border : solid black;
+    border-width : 0px;
+    padding : 10px;
+}
+
+#replyButton:hover{
+    border-width: 1px;
+}
