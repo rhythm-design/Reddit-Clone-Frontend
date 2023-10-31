@@ -5,11 +5,13 @@ import { useState } from "react";
 import CommunitiesDropdown from "./CommunitiesDropdown";
 import api from "../api";
 import { useNavigate } from "react-router-dom";
+import CategoryDropdown from "./CategoriesDropdown";
 
 const CreatePostForm = () => {
     const navigate = useNavigate()
     const [formType, setFormType] = useState("default")
     const [selectedCommunity, setSelectedCommunity] = useState('')
+    const [selectedCategory, setSelectedCategory] = useState('')
 
     const [postTitle, setPostTitle] = useState('')
     const [postContent, setPostContent] = useState('')
@@ -58,6 +60,9 @@ const CreatePostForm = () => {
     return (
         <main>
             <CommunitiesDropdown selectedCommunity={selectedCommunity} setSelectedCommunity={setSelectedCommunity} />
+            
+            
+            
             <form>
                 <input type="hidden" name="community" value={selectedCommunity} />
                 <h1>Create Post...</h1>
@@ -91,7 +96,7 @@ const CreatePostForm = () => {
                 <div>
                     <label>
                         <input
-                            type="radio"
+                            type="checkbox"
                             value="option1"
 
                             checked={isDraft}
@@ -100,6 +105,10 @@ const CreatePostForm = () => {
                         &nbsp;isDraft ?
                     </label>
                 </div>
+
+                <CategoryDropdown selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />
+            
+            
 
 
                 <button type="submit" onClick={(e) => submitForm(e)}> Create Post..</button>

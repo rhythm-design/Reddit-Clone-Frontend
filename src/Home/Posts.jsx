@@ -90,10 +90,10 @@ const Posts = () => {
                                 </div>
 
 
-                                <div class="inline-flex items-center my-1">
+                                <div class="inline-flex items-center my-1" style={{padding : "1vh"}}>
                                     <div class="flex hover:bg-grey-lighter p-1">
                                         <svg class="w-4 fill-current text-grey" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M10 15l-4 4v-4H2a2 2 0 0 1-2-2V3c0-1.1.9-2 2-2h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-8zM5 7v2h2V7H5zm4 0v2h2V7H9zm4 0v2h2V7h-2z" /></svg>
-                                        <span class="ml-2 text-xs font-semibold text-grey">{post.comments.length} Comments</span>
+                                        <span class="ml-2 text-xs font-semibold text-grey" onClick={()=>{openModal(post)}}>{post.comments.length} Comments</span>
                                     </div>
                                     <div class="flex hover:bg-grey-lighter p-1 ml-2">
                                         <svg class="w-4 fill-current text-grey" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M5.08 12.16A2.99 2.99 0 0 1 0 10a3 3 0 0 1 5.08-2.16l8.94-4.47a3 3 0 1 1 .9 1.79L5.98 9.63a3.03 3.03 0 0 1 0 .74l8.94 4.47A2.99 2.99 0 0 1 20 17a3 3 0 1 1-5.98-.37l-8.94-4.47z" /></svg>
