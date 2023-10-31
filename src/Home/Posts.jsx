@@ -114,7 +114,7 @@ const Posts = () => {
                 })
             }
             {isModalOpen && (
-                <PostModal post={selectedPost} onClose={closeModal} />
+                <PostModal post={selectedPost}  onClose={closeModal} />
             )}
         </>
     )

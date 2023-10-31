@@ -18,16 +18,17 @@ const PostModal = ({ post, onClose }) => {
   return (
     <div className="modal-container">
       <div className="modal">
-        <div className="modal-content" ref={modalContentRef} onScroll={handleScroll}>
+        
+        <div className="modal-content" ref={modalContentRef} onScroll={handleScroll}> 
           <button onClick={onClose} className="close-button float-right absolute sticky">Close</button>
-          <div className="flex border border-grey-light-alt hover:border-grey rounded bg-white cursor-pointer mb-4">
+          <div style={{flexDirection : "column"}} className="flex border border-grey-light-alt hover:border-grey rounded bg-white cursor-pointer mb-4">
             {/* Voting Section */}
             <div className="w-1/12 flex flex-col text-center pt-2">
               {/* ... */}
             </div>
 
-            {/* Main Section */}
-            <div className="w-11/12 pt-2">
+            {/* Main Section */} 
+            <div className="w-11/12 pt-2" style={{display: "flex", justifyContent : "center", alignItems: "center", flexDirection: "column"}}>
               <div className="flex items-center text-xs mb-2">
                 <a href="#" className="font-semibold no-underline hover:underline text-black flex items-center">
                   <img className="rounded-full border h-5 w-5" src="https://avatars0.githubusercontent.com/u/30317862?s=200&v=4" alt="User Avatar" />
@@ -45,10 +46,16 @@ const PostModal = ({ post, onClose }) => {
                 <img src="https://www.cricbuzz.com/a/img/v1/595x396/i1/c357076/rohit-led-from-the-front-with.jpg" alt="Post Image" />
               </div>
             </div>
-          </div>
 
-          <CommentsPostId/>
-        </div>
+            <div style={{width : "100%"}}>
+              <CommentsPostId post={post}/>
+            </div>
+
+
+          </div> 
+         </div>
+
+
       </div>
     </div>
   );

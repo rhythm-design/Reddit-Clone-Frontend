@@ -61,7 +61,7 @@
   justify-content: center;
   align-items: center;
   padding: 10%;
-  border: 2px solid red;
+  /* border: 2px solid red; */
   overflow: auto;
 }
 
@@ -76,6 +76,7 @@
   display: flex;
   flex-direction: column;
   height: 100%;
+  /* border : solid blue; */
 }
 
 .modal-content {
