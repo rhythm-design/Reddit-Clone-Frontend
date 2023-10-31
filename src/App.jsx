@@ -8,15 +8,15 @@ import CreateSubredditPage from './Subreddit/CreateSubredditPage'
 import Login from './Auth/Login'
 import Register from './Auth/Register'
 import Header from './Home/Header'
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+// import { ToastContainer } from 'react-toastify';
+// import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
 
   return (
     <div>
       <BrowserRouter>
-        <ToastContainer position="bottom-right" />
+        {/* <ToastContainer position="bottom-right" /> */}
         <Routes>
           <Route path="/" element={<><Home/></>} />
           <Route path="/submit" element={<><CreatePostPage/></>} />

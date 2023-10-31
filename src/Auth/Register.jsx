@@ -4,7 +4,7 @@ import "./Register.css"
 import axios from 'axios'
 import { useState } from "react";
 import api from "../api";
-import {toast} from 'react-toastify';
+// import {toast} from 'react-toastify';
 
 const Register = () => {
     const navigate = useNavigate()
