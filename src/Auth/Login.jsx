@@ -19,9 +19,16 @@ const Login = () => {
             password: loginPassword
         }
         var response = {};
-        await api.post("/login", loginUser)
-            .then((res) => response = res.data)
-            .catch((err) => console.log(err))
+        await api.post("auth/login", loginUser)
+        .then(response => {
+            console.log(response);
+            if (response.data.jwtToken) {
+                console.log(response.data);
+              localStorage.setItem("user", JSON.stringify(response.data));
+            }
+    
+            return response.data;
+          });
         const { message, loggedIn } = response
 
         // console.log(message, loggedIn)  
