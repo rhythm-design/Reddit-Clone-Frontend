@@ -4,8 +4,8 @@ import "./Register.css"
 import axios from 'axios'
 import { useState } from "react";
 import api from "../api";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+// import { ToastContainer, toast } from 'react-toastify';
+// import 'react-toastify/dist/ReactToastify.css';
 // import {toast} from 'react-toastify';
 
 const Register = () => {
@@ -27,7 +27,7 @@ const Register = () => {
         console.log("userdetails: ", userDetails)
         if (username.length === 0 || password.length === 0 || email.length === 0) {
             const errorElement = document.getElementById('submissionError');
-            toast.error("Invalid Credentials")
+            // toast.error("Invalid Credentials")
             errorElement.textContent = 'Ensure Correct Validations...';
         } else {
 
@@ -51,7 +51,7 @@ const Register = () => {
                             localStorage.setItem("user", JSON.stringify(response.data));
                         }
     
-                        toast.success("User created sucessfully")
+                        // toast.success("User created sucessfully")
                         return response.data;
                     });
                 const { message, loggedIn } = response
@@ -123,7 +123,7 @@ const Register = () => {
                 <span> Already a Registered User ??  <a onClick={() => navigate("/login")}> Login </a></span>
 
             </form>
-            <ToastContainer
+            {/* <ToastContainer
                 position="bottom-right"
                 autoClose={5000}
                 hideProgressBar={false}
@@ -134,7 +134,7 @@ const Register = () => {
                 draggable
                 pauseOnHover
                 theme="light"
-                />
+                /> */}
         </main>
     )
 }

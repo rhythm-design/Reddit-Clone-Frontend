@@ -11,6 +11,7 @@ import Header from './Home/Header'
 import SearchPost from './Posts/SearchPost'
 import FilterPost from './Posts/FilterPost'
 import CategorySearch from './Posts/CategorySearch'
+import SubredditHome from './Community/SubredditHome'
 // import { ToastContainer } from 'react-toastify';
 // import 'react-toastify/dist/ReactToastify.css';
 
@@ -29,6 +30,7 @@ function App() {
           <Route path="/search" element={<><SearchPost/></>} />
           <Route path="/filter" element={<><FilterPost/></>} />
           <Route path="/category" element={<><CategorySearch/></>} />
+          <Route path="/community" element={<><SubredditHome/></>} />
         </Routes>
       </BrowserRouter>
 
