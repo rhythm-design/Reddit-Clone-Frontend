@@ -19,19 +19,26 @@ const Register = () => {
         const userDetails = {
             'username': username,
             'email': email,
-            'password': password 
+            'password': password
         }
 
-        console.log("userdetails: ", userDetails )
+        console.log("userdetails: ", userDetails)
+        if (username.length === 0 || password.length === 0 || email.length === 0) {
+            const errorElement = document.getElementById('submissionError');
+            errorElement.textContent = 'Ensure Correct Validations...';
+        } else {
 
-        api.post("/auth/register", userDetails).then((res) => {
-            // toast.success("Successfully Registered User")
-            console.log("repsonse: " ,res);
-            setUsername("");
-            setPassword("");
-            setEmail("");
-        })
-            .catch((err) => console.log(err))
+            api.post("/auth/register", userDetails).then((res) => {
+                // toast.success("Successfully Registered User")
+                console.log("repsonse: ", res);
+                setUsername("");
+                setPassword("");
+                setEmail("");
+
+                navigate("/")
+            })
+                .catch((err) => console.log(err))
+        }
 
     }
 
@@ -50,12 +57,45 @@ const Register = () => {
                 </div>
 
 
-                <input type="email" name="email" onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
-                <input type="text" name="username" onChange={(e) => setUsername(e.target.value)} placeholder="Username" />
-                <input type="password" name="password" onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
+                <input type="email" name="email" onChange={(e) => setEmail(e.target.value)} placeholder="Email"
+                    onBlur={(e) => {
+                        const errorElement = document.getElementById('emailError');
+
+                        if (email.length === 0) {
+                            errorElement.textContent = 'email is required';
+                        } else {
+                            errorElement.textContent = '';
+                        }
+                    }}
+                />
+                <span id="emailError" style={{ color: 'red' }}></span>
+                <input type="text" name="username" onChange={(e) => setUsername(e.target.value)} placeholder="Username"
+                    onBlur={(e) => {
+                        const errorElement = document.getElementById('usernameError');
+
+                        if (username.length === 0) {
+                            errorElement.textContent = 'username is required';
+                        } else {
+                            errorElement.textContent = '';
+                        }
+                    }}
+                />
+                <span id="usernameError" style={{ color: 'red' }}></span>
+                <input type="password" name="password" onChange={(e) => setPassword(e.target.value)} placeholder="Password"
+                    onBlur={(e) => {
+                        const errorElement = document.getElementById('passwordError');
+
+                        if (password.length === 0) {
+                            errorElement.textContent = 'password is required';
+                        } else {
+                            errorElement.textContent = '';
+                        }
+                    }}
+                />
+                <span id="passwordError" style={{ color: 'red' }}></span>
 
                 <button type="submit" onClick={(e) => getRequestServer(e)}> Register..</button>
-
+                <span id="submissionError" style={{ color: 'red' }}></span>
                 <span> Already a Registered User ??  <a onClick={() => navigate("/login")}> Login </a></span>
 
             </form>

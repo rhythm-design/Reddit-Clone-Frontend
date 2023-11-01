@@ -9,32 +9,35 @@ import api from "../api";
 const Login = () => {
     const navigate = useNavigate()
 
-    const [loginEmail, setLoginEmail] = useState()
-    const [loginPassword, setLoginPassword] = useState()
+    const [loginEmail, setLoginEmail] = useState("")
+    const [loginPassword, setLoginPassword] = useState("")
 
     const postLoginRequest = async () => {
-
-        const loginUser = {
-            email: loginEmail,
-            password: loginPassword
-        }
-        var response = {};
-        await api.post("auth/login", loginUser)
-        .then(response => {
-            console.log(response);
-            if (response.data.jwtToken) {
-                console.log(response.data);
-              localStorage.setItem("user", JSON.stringify(response.data));
+        if (loginPassword.length === 0 || loginEmail.length === 0) {
+            const errorElement = document.getElementById('submissionError');
+            errorElement.textContent = 'Ensure Correct Validations...';
+        } else {
+            const loginUser = {
+                email: loginEmail,
+                password: loginPassword
             }
-    
-            return response.data;
-          });
-        const { message, loggedIn } = response
+            var response = {};
+            await api.post("auth/login", loginUser)
+                .then(response => {
+                    console.log(response);
+                    if (response.data.jwtToken) {
+                        console.log(response.data);
+                        localStorage.setItem("user", JSON.stringify(response.data));
+                    }
 
-        // console.log(message, loggedIn)  
+                    return response.data;
+                });
+            const { message, loggedIn } = response
 
-        if (loggedIn) navigate("/", { state: { loggedIn: loggedIn } })
+            // console.log(message, loggedIn)  
 
+            if (loggedIn) navigate("/", { state: { loggedIn: loggedIn } })
+        }
     }
 
     return (
@@ -51,10 +54,33 @@ const Login = () => {
                     <h2> &nbsp; Login Reddit </h2>
                 </div>
 
-                <input type="email" name="email" onChange={(e) => setLoginEmail(e.target.value)} placeholder="Email" />
-                <input type="password" name="password" onChange={(e) => setLoginPassword(e.target.value)} placeholder="Password" />
+                <input type="email" name="email" onChange={(e) => setLoginEmail(e.target.value)} placeholder="Email"
+                    onBlur={(e) => {
+                        const errorElement = document.getElementById('emailError');
+
+                        if (loginEmail.length === 0) {
+                            errorElement.textContent = 'email is required';
+                        } else {
+                            errorElement.textContent = '';
+                        }
+                    }}
+                />
+                <span id="emailError" style={{ color: 'red' }}></span>
+                <input type="password" name="password" onChange={(e) => setLoginPassword(e.target.value)} placeholder="Password"
+                    onBlur={(e) => {
+                        const errorElement = document.getElementById('passwordError');
+
+                        if (loginPassword.length === 0) {
+                            errorElement.textContent = 'password is required';
+                        } else {
+                            errorElement.textContent = '';
+                        }
+                    }}
+                />
+                <span id="passwordError" style={{ color: 'red' }}></span>
 
                 <button type="submit" onClick={(e) => { e.preventDefault(); postLoginRequest() }}> Login..</button>
+                <span id="submissionError" style={{ color: 'red' }}></span>
 
                 <span> Not a Registered User ?? <a onClick={() => navigate("/register")}> Register </a></span>
 
