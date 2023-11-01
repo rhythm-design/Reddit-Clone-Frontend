@@ -16,6 +16,7 @@ const CommunitiesDropdown = ({ selectedCommunity, setSelectedCommunity }) => {
   const toggleDropdown = (event) => {
     event.preventDefault();
     setDropdownVisible(!dropdownVisible);
+    console.log(dropdownVisible)
   };
 
   const handleFilterChange = (event) => {
