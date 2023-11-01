@@ -90,10 +90,10 @@ const Posts = () => {
                                             <img class="rounded-full border h-5 w-5" src="https://avatars0.githubusercontent.com/u/30317862?s=200&v=4" />
                                             <span class="ml-2">{post.subreddit.name}</span>
                                         </a>
-                                        <span class="text-grey-light mx-1 text-xxs">•</span>
-                                        <span class="text-grey">Posted by</span>
+                                        {/* <span class="text-grey-light mx-1 text-xxs">•</span> */}
+                                        {/* <span class="text-grey">Posted by</span> */}
 
-                                        <a href="#" class="text-grey mx-1 no-underline hover:underline">u/rhythm</a>
+                                        {/* <a href="#" class="text-grey mx-1 no-underline hover:underline">u/rhythm</a> */}
                                         <span class="text-grey">2 hours ago</span>
                                     </span>
                                     <span>
