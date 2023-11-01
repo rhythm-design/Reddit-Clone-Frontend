@@ -88,7 +88,7 @@ const Posts = () => {
                                     <span>
                                         <a href="#" class="font-semibold no-underline hover:underline text-black flex items-center">
                                             <img class="rounded-full border h-5 w-5" src="https://avatars0.githubusercontent.com/u/30317862?s=200&v=4" />
-                                            <span class="ml-2">r/rhythmvarshney</span>
+                                            <span class="ml-2">{post.subreddit.name}</span>
                                         </a>
                                         <span class="text-grey-light mx-1 text-xxs">•</span>
                                         <span class="text-grey">Posted by</span>
@@ -126,14 +126,10 @@ const Posts = () => {
                                         <svg class="w-4 fill-current text-grey" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M5.08 12.16A2.99 2.99 0 0 1 0 10a3 3 0 0 1 5.08-2.16l8.94-4.47a3 3 0 1 1 .9 1.79L5.98 9.63a3.03 3.03 0 0 1 0 .74l8.94 4.47A2.99 2.99 0 0 1 20 17a3 3 0 1 1-5.98-.37l-8.94-4.47z" /></svg>
                                         <span class="ml-2 text-xs font-semibold text-grey">Share</span>
                                     </div>
-                                    <div class="flex hover:bg-grey-lighter p-1 ml-2">
-                                        <svg class="w-4 fill-current text-grey" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M0 2C0 .9.9 0 2 0h14l4 4v14a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm5 0v6h10V2H5zm6 1h3v4h-3V3z" /></svg>
-                                        <span class="ml-2 text-xs font-semibold text-grey">Save</span>
-                                    </div>
                                     <div class="flex hover:bg-grey-lighter p-1 ml-2 rotate-90">
                                         <svg class="w-4 fill-current text-grey" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M10 12a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0-6a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 12a2 2 0 1 1 0-4 2 2 0 0 1 0 4z" /></svg>
                                     </div>
-                                    <div class="flex hover:bg-grey-lighter p-1 ml-2">
+                                    <div class="flex hover:bg-grey-lighter p-1 ml-2" style={{border: '2px solid black', padding: '5px'}}>
                                         <button onClick={() => openModal(post)}>View Post</button>
                                     </div>
                                 </div>

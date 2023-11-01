@@ -50,29 +50,11 @@ const CreatePostForm = () => {
             formData.append('isDraft', isDraft);
             formData.append('category', selectedCategory);
             formData.append('subredditId', selectedCommunity.communityId);
-
-            console.log("selected comm", selectedCommunity)
-
-            console.log("req body for form", formData)
+            formData.append('user-email', JSON.parse(localStorage.getItem('user')).username)
 
 
             api.post('/create', formData).then((res) => console.log("Response is: ", res))
                 .catch((err) => console.log("Error is: ", err));
-
-            // const requestBody = {
-            //     postTitle: postTitle,
-            //     postContent: postContent,
-            //     postUrl: postUrl,
-            //     isDraft: isDraft,
-            //     category: selectedCategory,
-            //     subredditId: selectedCommunity.communityId
-            // }
-
-
-
-            // await api.post("/create", requestBody)
-            //     .then((res) => { console.log(res) })
-            //     .catch((err) => { console.log(err) })
 
             setPostTitle("")
             setPostContent("")
@@ -81,6 +63,7 @@ const CreatePostForm = () => {
             setIsDraft(false)
 
             navigate("/")
+            location.reload();
 
         }
 
