@@ -23,16 +23,16 @@ const CreateSubredditForm = () => {
             errorElement.textContent = 'Ensure correct validations...';
         } else {
 
-            // api.post("/subreddit/create", subredditDetails).then((res) => {
-            //     toast.success("Subreddit Created Sucessfully")
-            // })
-            //     .catch((err) => toast.warn(err))
+            api.post("/subreddit/create", subredditDetails).then((res) => {
+                console.log("Subreddit Created Sucessfully")
+            })
+                .catch((err) => console.log(err))
 
             setSubredditDescription("")
             setSubredditFlairs("")
             setSubredditName("")
 
-            // navigate("/")
+            navigate("/")
         }
 
     }
