@@ -12,9 +12,9 @@ const Posts = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
 
-    useEffect(() => {
+    // useEffect(() => {
 
-    }, [])
+    // }, [])
     useEffect(() => {
         api.get('/posts').then((res) => {
             setPosts(res.data);

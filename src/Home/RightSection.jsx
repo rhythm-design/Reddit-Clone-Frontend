@@ -1,6 +1,10 @@
 import { useNavigate } from "react-router-dom"
+import { useState } from "react"
 
 const RightSection = () => {
+
+    const [subreddit, setSubreddit] = useState([])
+
     const navigate = useNavigate()
     return (
         <>
