@@ -1,4 +1,9 @@
+import { useNavigate } from "react-router-dom";
+import api from "../api";
+
 const PostOptions = () => {
+    const navigate = useNavigate()
+
     return (
         <>
             <div class="bg-white mb-3">
@@ -22,12 +27,12 @@ const PostOptions = () => {
                             <div class="inline-flex items-center">
                                 <div class="text-xxs text-grey font-semibold mr-4">SORT</div>
                                 <div class="inline-flex items-center">
-                                    <button class="inline-flex items-center">
+                                    <button class="inline-flex items-center" onClick={()=>{navigate("/filter", { state: { sortType: "hot" } });}}>
                                         <svg class="h-4 fill-current text-blue" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><title>Hot</title><path d="M10.31.61a.5.5,0,0,0-.61,0C9.41.83,2.75,6.07,2.75,11.47a8.77,8.77,0,0,0,3.14,6.91.5.5,0,0,0,.75-.64,3.84,3.84,0,0,1-.55-2A7.2,7.2,0,0,1,10,9.56a7.2,7.2,0,0,1,3.91,6.23,3.84,3.84,0,0,1-.55,2,.5.5,0,0,0,.75.64,8.77,8.77,0,0,0,3.14-6.91C17.25,6.07,10.59.83,10.31.61Z"></path></svg>
                                         <span class="text-blue text-xs font-semibold ml-1 mr-2">HOT</span>
                                         <svg class="h-4 fill-current text-blue" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><g><path fill="inherit" d="M14.1711599,9.3535 L9.99925636,13.529 L5.82735283,9.3535 C5.51262415,9.0385 5.73543207,8.5 6.18054835,8.5 L13.8179644,8.5 C14.2630807,8.5 14.4858886,9.0385 14.1711599,9.3535"></path></g></svg>
                                     </button>
-                                    <button class="inline-flex items-center ml-3">
+                                    <button class="inline-flex items-center ml-3 " onClick={()=>{navigate("/filter", { state: { sortType: "top" } });}}>
                                         <span class="text-blue text-xs font-semibold ml-1 mr-2">EVERYWHERE</span>
                                         <svg class="h-4 fill-current text-blue" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><g><path fill="inherit" d="M14.1711599,9.3535 L9.99925636,13.529 L5.82735283,9.3535 C5.51262415,9.0385 5.73543207,8.5 6.18054835,8.5 L13.8179644,8.5 C14.2630807,8.5 14.4858886,9.0385 14.1711599,9.3535"></path></g></svg>
                                     </button>

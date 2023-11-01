@@ -9,6 +9,8 @@ import Login from './Auth/Login'
 import Register from './Auth/Register'
 import Header from './Home/Header'
 import SearchPost from './Posts/SearchPost'
+import FilterPost from './Posts/FilterPost'
+import CategorySearch from './Posts/CategorySearch'
 // import { ToastContainer } from 'react-toastify';
 // import 'react-toastify/dist/ReactToastify.css';
 
@@ -25,6 +27,8 @@ function App() {
           <Route path="/login" element={<><Header showHeaderOptions={false}/><Login/></>}/>
           <Route path="/register" element={<><Header showHeaderOptions={false}/><Register/></>}/>
           <Route path="/search" element={<><SearchPost/></>} />
+          <Route path="/filter" element={<><FilterPost/></>} />
+          <Route path="/category" element={<><CategorySearch/></>} />
         </Routes>
       </BrowserRouter>
 
