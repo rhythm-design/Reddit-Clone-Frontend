@@ -22,13 +22,16 @@ const Register = () => {
             'password': password 
         }
 
-        api.post("/register", userDetails).then((res) => {
-            toast.success("Successfully Registered User")
+        console.log("userdetails: ", userDetails )
+
+        api.post("/auth/register", userDetails).then((res) => {
+            // toast.success("Successfully Registered User")
+            console.log("repsonse: " ,res);
             setUsername("");
             setPassword("");
             setEmail("");
         })
-            .catch((err) => toast.warn(err))
+            .catch((err) => console.log(err))
 
     }
 

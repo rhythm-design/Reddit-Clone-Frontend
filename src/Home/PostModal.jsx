@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import "./PostModal.css";
 import CommentsPostId from "../Comments/CommentsPostId";
+import ImageDisplay from "../Posts/ImageDisplay";
 
 const PostModal = ({ post, onClose }) => {
   const modalContentRef = useRef(null);
@@ -43,7 +44,8 @@ const PostModal = ({ post, onClose }) => {
                 <h2 className="text-lg font-medium mb-1">{post.postTitle}</h2>
                 <p className="mb-1" style={{ color: "#1c1c1c" }}>{post.postContent}</p>
                 <p className="mb-1" style={{ color: "#1c1c1c" }}>{post.id}</p>
-                <img src="https://www.cricbuzz.com/a/img/v1/595x396/i1/c357076/rohit-led-from-the-front-with.jpg" alt="Post Image" />
+                <ImageDisplay style={{ width: '100% !important' }} id={post.id} format="png"/>
+                {/* <img src="https://www.cricbuzz.com/a/img/v1/595x396/i1/c357076/rohit-led-from-the-front-with.jpg" alt="Post Image" /> */}
               </div>
             </div>
 

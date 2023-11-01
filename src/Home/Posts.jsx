@@ -107,14 +107,13 @@ const Posts = () => {
                                 <div style={{
                                     padding : "2vh", 
                                     cursor : "pointer",
-                                    boxShadow: "4px 4px 8px rgba(0, 0, 0, 0.1)",
                                     
                                 }}>
                                     <h2 class="text-lg font-medium mb-1">{post.postTitle}</h2>
                                     <p class="mb-1" style={{ color: '#1c1c1c' }}>{post.postContent}</p>
                                     <p class="mb-1" style={{ color: '#1c1c1c' }}>{post.id}</p>
-                                        <ImageDisplay id={post.id} format="png"/>
-                                    <img style={{ width: '100% !important' }} src="https://www.cricbuzz.com/a/img/v1/980x654/i1/c357174/jasprit-bumrah-and-mohammed-sh.jpg"></img>
+                                        <ImageDisplay style={{ width: '100% !important' }} id={post.id} format="png"/>
+                                    {/* <img style={{ width: '100% !important' }} src="https://www.cricbuzz.com/a/img/v1/980x654/i1/c357174/jasprit-bumrah-and-mohammed-sh.jpg"></img> */}
                                 </div>
 
 
