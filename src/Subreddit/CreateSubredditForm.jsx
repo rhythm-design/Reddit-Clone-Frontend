@@ -24,7 +24,7 @@ const CreateSubredditForm = () => {
         } else {
 
             api.post("/subreddit/create", subredditDetails).then((res) => {
-                console.log("Subreddit Created Sucessfully")
+                console.log("Subreddit Created Sucessfully", res.data)
             })
                 .catch((err) => console.log(err))
 

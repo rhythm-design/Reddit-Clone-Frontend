@@ -60,7 +60,7 @@ const CreatePostForm = () => {
                 postUrl: postUrl,
                 isDraft: isDraft,
                 category: "Sports",
-                subredditId: "1"
+                subredditId: "6"
             }
 
 
