@@ -2,7 +2,7 @@ const LeftSection = () => {
     return (
         <>
             <div class="w-1/3 ml-5" >
-                <div class="py-2" style={{height: "auto", border: '2px solid darkgray'}}>
+                <div class="py-2">
                    
                     <div class="rounded bg-white mb-4">
                         <div class="p-3 text-xxs font-semibold w-full">TRENDING TOPICS</div>
