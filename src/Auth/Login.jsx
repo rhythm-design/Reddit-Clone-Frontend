@@ -2,6 +2,8 @@ import { useNavigate, useSearchParams } from "react-router-dom"
 import "./Register.css"
 import { useState } from "react"
 import axios from "axios"
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import api from "../api";
 
@@ -38,6 +40,7 @@ const Login = () => {
             console.log(JSON.parse(localStorage.getItem('user')))
 
             if (JSON.parse(localStorage.getItem('user'))) navigate("/")
+            toast.success("User logged in sucessfully")
         }
     }
 
