@@ -10,7 +10,7 @@ import CategoryDropdown from "./CategoriesDropdown";
 const CreatePostForm = () => {
     const navigate = useNavigate()
     const [formType, setFormType] = useState("default")
-    const [selectedCommunity, setSelectedCommunity] = useState('')
+    const [selectedCommunity, setSelectedCommunity] = useState({})
     const [selectedCategory, setSelectedCategory] = useState('')
 
     const [postTitle, setPostTitle] = useState('')
@@ -31,44 +31,45 @@ const CreatePostForm = () => {
 
     const submitForm = async (e) => {
         e.preventDefault()
-        
-        const formData = new FormData();
-        console.log("File is: ",imagePost)
-        formData.append('post-image',imagePost);
-        formData.append("postTitle", postTitle);
-        formData.append('postContent',postContent);
-        formData.append('postUrl',postUrl);
-        formData.append('isDraft', isDraft);
-        formData.append('category', "Sports");
-        formData.append('subredditId', "1");
-
-        api.post('/create', formData).then((res) => console.log("Response is: ", res))
-              .catch((err) => console.log("Error is: ",  err));
-
-        navigate("/")
-       
-
         if ((postTitle.length >= 200 || postTitle.length === 0) || (postContent.length >= 400 || postContent.length === 0)) {
 
             const errorElement = document.getElementById('submissionError');
             errorElement.textContent = 'Ensure correct validations...';
 
-        } else {
-            const requestBody = {
-                postTitle: postTitle,
-                postContent: postContent,
-                postUrl: postUrl,
-                isDraft: isDraft,
-                category: "Sports",
-                subredditId: "6"
-            }
+        }
+        else {
+            const formData = new FormData();
+            console.log("File is: ", imagePost)
+            formData.append('post-image', imagePost);
+            formData.append("postTitle", postTitle);
+            formData.append('postContent', postContent);
+            formData.append('postUrl', postUrl);
+            formData.append('isDraft', isDraft);
+            formData.append('category', selectedCategory);
+            formData.append('subredditId', selectedCommunity.communityId);
+
+            console.log("selected comm", selectedCommunity)
+
+            console.log("req body for form", formData)
+
+
+            api.post('/create', formData).then((res) => console.log("Response is: ", res))
+                .catch((err) => console.log("Error is: ", err));
+
+            // const requestBody = {
+            //     postTitle: postTitle,
+            //     postContent: postContent,
+            //     postUrl: postUrl,
+            //     isDraft: isDraft,
+            //     category: selectedCategory,
+            //     subredditId: selectedCommunity.communityId
+            // }
 
 
 
-            console.log(requestBody)
-            await api.post("/create", requestBody)
-                .then((res) => { console.log(res) })
-                .catch((err) => { console.log(err) })
+            // await api.post("/create", requestBody)
+            //     .then((res) => { console.log(res) })
+            //     .catch((err) => { console.log(err) })
 
             setPostTitle("")
             setPostContent("")

@@ -38,7 +38,7 @@ const CommunitiesDropdown = ({ selectedCommunity, setSelectedCommunity }) => {
         showCommunity ?
           <div className="dropdown" onClick={(e) => e.stopPropagation()}>
             <button className="dropbtn" onClick={(e) => { setShowCommunity(false); toggleDropdown(e) }}>
-              {selectedCommunity}
+              {selectedCommunity.communityName}
             </button>
           </div>
           :
@@ -53,7 +53,10 @@ const CommunitiesDropdown = ({ selectedCommunity, setSelectedCommunity }) => {
                   communities.map((com, key) => {
                     return (
                       <span key={key}>
-                        <p onClick={(e) => { setSelectedCommunity(com.name); toggleDropdown(e); setShowCommunity(true) }}>{com.name}</p>
+                        <p onClick={(e) => { setSelectedCommunity({
+                          communityName : com.name,
+                          communityId : com.id
+                        }); toggleDropdown(e); setShowCommunity(true) }}>{com.name}</p>
                       </span>
                     )
                   }) :
