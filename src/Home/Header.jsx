@@ -25,7 +25,7 @@ const Header = () => {
                                 <div class="flex items-center w-auto h-full pl-8 pr-2 border border-grey-lightest hover:border-blue rounded relative">
                                     {/* <svg class="w-4 absolute pin-l ml-2 fill-current text-grey-dark" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg"><g><path d="M12.4743167,11.1299698 L14.6957506,13.2817166 C15.0924476,13.665969 15.1025359,14.2990536 14.7182834,14.6957506 C14.334031,15.0924476 13.7009464,15.1025359 13.3042494,14.7182834 L11.0486163,12.5334103 C10.0079655,13.2768564 8.73367013,13.7142857 7.35714286,13.7142857 C3.84600096,13.7142857 1,10.8682847 1,7.35714286 C1,3.84600096 3.84600096,1 7.35714286,1 C10.8682847,1 13.7142857,3.84600096 13.7142857,7.35714286 C13.7142857,8.76975383 13.2536226,10.0747029 12.4743167,11.1299698 Z M11.7142857,7.35714286 C11.7142857,4.95057046 9.76371525,3 7.35714286,3 C4.95057046,3 3,4.95057046 3,7.35714286 C3,9.76371525 4.95057046,11.7142857 7.35714286,11.7142857 C9.76371525,11.7142857 11.7142857,9.76371525 11.7142857,7.35714286 Z"></path></g></svg> */}
                                     <input class="text-sm w-full" type="text" name="search" placeholder="Search Reddit" />
-                                    <button onClick={()=>{navigate("/search"), {state}={seearchQuery : "cricket"}}}>
+                                    <button onClick={() => { navigate("/search"), { state } = { seearchQuery: "cricket" } }}>
                                         <i class="fa-solid fa-magnifying-glass"></i>
                                     </button>
                                 </div>
@@ -41,8 +41,28 @@ const Header = () => {
                             <a href="#" class="p-2 flex items-center rounded-sm mr-2 hover:bg-grey-lighter">
                                 <svg class="w-4" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill="inherit" d="M16.9998,2.9995 C18.1028,2.9995 18.9998,3.8975 18.9998,4.9995 L18.9998,14.9995 C18.9998,16.1025 18.1028,16.9995 16.9998,16.9995 L2.9998,16.9995 C1.8978,16.9995 0.9998,16.1025 0.9998,14.9995 L0.9998,4.9995 C0.9998,3.8975 1.8978,2.9995 2.9998,2.9995 L16.9998,2.9995 Z M13.9648,13.3525 C15.2718,13.3525 16.3188,12.6745 16.8278,11.5665 L15.1818,10.9775 C14.9318,11.4765 14.4528,11.8165 13.8338,11.8165 C13.0158,11.8165 12.3478,11.0575 12.3478,9.9995 C12.3478,8.9525 13.0058,8.1735 13.8438,8.1735 C14.4528,8.1735 14.9218,8.5025 15.1308,8.9615 L16.6968,8.2435 C16.1988,7.2755 15.2108,6.6365 13.9648,6.6365 C12.0588,6.6365 10.5118,8.1335 10.5118,9.9995 C10.5118,11.8755 12.0588,13.3525 13.9648,13.3525 Z M6.6248,13.3635 C8.5408,13.3635 10.0878,11.8755 10.0878,9.9995 C10.0878,8.1335 8.5408,6.6365 6.6248,6.6365 C4.7188,6.6365 3.1718,8.1335 3.1718,9.9995 C3.1718,11.8755 4.7188,13.3635 6.6248,13.3635 Z M6.625,8.1641 C7.562,8.1641 8.262,8.9421 8.262,10.0001 C8.262,11.0481 7.562,11.8361 6.625,11.8361 C5.697,11.8361 4.998,11.0481 4.998,10.0001 C4.998,8.9421 5.697,8.1641 6.625,8.1641 Z"></path></svg>
                             </a>
-                            <a href="#" class="border border-blue-dark text-blue-dark px-8 py-2.2 font-semibold text-xs rounded ml-4 no-underline hover:border-blue hover:text-blue" onClick={() => navigate("/login")}>LOGIN</a>
-                            <a href="#" class="border border-blue-dark text-blue-dark px-8 py-2.2 font-semibold text-xs rounded ml-4 no-underline hover:border-blue hover:text-blue" onClick={() => navigate("/register")}>Register</a>
+                            {
+                                console.log("inside home page ", JSON.parse(localStorage.getItem('user')))
+                            }    {
+                                console.log("inside home page ", JSON.parse(localStorage.getItem('user')) ? "yes " : "no ")
+                            }
+
+                            {
+                                !(JSON.parse(localStorage.getItem('user'))) ?
+                                    <span>
+                                        <a href="#" class="border border-blue-dark text-blue-dark px-8 py-2.2 font-semibold text-xs rounded ml-4 no-underline hover:border-blue hover:text-blue" onClick={() => navigate("/login")}>LOGIN</a>
+                                        <a href="#" class="border border-blue-dark text-blue-dark px-8 py-2.2 font-semibold text-xs rounded ml-4 no-underline hover:border-blue hover:text-blue" onClick={() => navigate("/register")}>Register</a>
+                                    </span>
+                                    :
+                                    <span>
+                                        <a href="#" class="border border-blue-dark text-blue-dark px-8 py-2.2 font-semibold text-xs rounded ml-4 no-underline hover:border-blue hover:text-blue" >{
+                                        (JSON.parse(localStorage.getItem('user')).username)}</a>
+                                    </span>
+                            }
+
+
+
+
                             <button class="inline-flex items-center ml-3 mr-5">
                                 <div class="flex items-center pr-2">
                                     <svg class="w-6 fill-current text-grey-dark" viewBox="0 0 250 250" xmlns="http://www.w3.org/2000/svg"><g fill="inherit"><path d="M146.8 142.6h-37.6c-31.1 0-56.5 25.3-56.5 56.5 0 5.2 4.2 9.4 9.4 9.4h131.8c5.2 0 9.4-4.2 9.4-9.4 0-31.2-25.3-56.5-56.5-56.5zM128 130.7c20.1 0 36.4-16.3 36.4-36.4v-9.4c0-20.1-16.3-36.4-36.4-36.4S91.6 64.8 91.6 84.9v9.4c0 20.1 16.3 36.4 36.4 36.4z"></path></g></svg>

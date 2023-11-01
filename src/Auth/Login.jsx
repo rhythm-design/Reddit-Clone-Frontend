@@ -34,9 +34,10 @@ const Login = () => {
                 });
             const { message, loggedIn } = response
 
-            // console.log(message, loggedIn)  
+            console.log(message, loggedIn)
+            console.log(JSON.parse(localStorage.getItem('user')))
 
-            if (loggedIn) navigate("/", { state: { loggedIn: loggedIn } })
+            if (JSON.parse(localStorage.getItem('user'))) navigate("/")
         }
     }
 
