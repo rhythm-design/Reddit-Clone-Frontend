@@ -21,6 +21,7 @@ class ImageDisplay extends Component {
         );
 
         this.setState({ imageData: base64Image });
+        console.log("successfully fetched images")
       })
       .catch((error) => {
         console.error('Error fetching image:', error);
