@@ -10,7 +10,7 @@ import CategoryDropdown from "./CategoriesDropdown";
 const CreatePostForm = () => {
     const navigate = useNavigate()
     const [formType, setFormType] = useState("default")
-    const [selectedCommunity, setSelectedCommunity] = useState({})
+    const [selectedCommunity, setSelectedCommunity] = useState()
     const [selectedCategory, setSelectedCategory] = useState('')
 
     const [postTitle, setPostTitle] = useState('')
@@ -36,6 +36,9 @@ const CreatePostForm = () => {
             const errorElement = document.getElementById('submissionError');
             errorElement.textContent = 'Ensure correct validations...';
 
+        } else if(selectedCommunity === null) {
+            const errorElement = document.getElementById('submissionError');
+            errorElement.textContent = 'Ensure to select community...';
         }
         else {
             const formData = new FormData();

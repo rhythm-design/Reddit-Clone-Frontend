@@ -27,7 +27,7 @@ const CommunitiesDropdown = ({ selectedCommunity, setSelectedCommunity }) => {
   const listCommunities = () => {
     api.get("/subreddit/subreddit")
       .then((res) => { console.log(res); setCommunities(res.data) })
-      .catch((err) => { })
+      .catch((err) => { console.log("error in community dropdown : ", err) })
   };
 
 

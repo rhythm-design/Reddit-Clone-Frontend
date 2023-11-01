@@ -57,6 +57,13 @@ const Header = () => {
                                     <span>
                                         <a href="#" class="border border-blue-dark text-blue-dark px-8 py-2.2 font-semibold text-xs rounded ml-4 no-underline hover:border-blue hover:text-blue" >{
                                         (JSON.parse(localStorage.getItem('user')).username)}</a>
+                                        <a href="#" class="border border-blue-dark text-blue-dark px-8 py-2.2 font-semibold text-xs rounded ml-4 no-underline hover:border-blue hover:text-blue"
+                                            onClick={()=>{
+                                                localStorage.removeItem("user")
+                                            }}
+                                        >
+                                            Logout
+                                        </a>    
                                     </span>
                             }
 

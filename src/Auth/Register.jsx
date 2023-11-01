@@ -28,14 +28,35 @@ const Register = () => {
             errorElement.textContent = 'Ensure Correct Validations...';
         } else {
 
-            api.post("/auth/register", userDetails).then((res) => {
+            api.post("/auth/register", userDetails).then(async (res) => {
                 // toast.success("Successfully Registered User")
                 console.log("repsonse: ", res);
                 setUsername("");
                 setPassword("");
                 setEmail("");
 
-                navigate("/")
+                const loginUser = {
+                    email: email,
+                    password: password
+                }
+                var response = {};
+                await api.post("auth/login", loginUser)
+                    .then(response => {
+                        console.log(response);
+                        if (response.data.jwtToken) {
+                            console.log(response.data);
+                            localStorage.setItem("user", JSON.stringify(response.data));
+                        }
+    
+                        return response.data;
+                    });
+                const { message, loggedIn } = response
+    
+                console.log(message, loggedIn)
+                console.log(JSON.parse(localStorage.getItem('user')))
+    
+                if (JSON.parse(localStorage.getItem('user'))) navigate("/")
+
             })
                 .catch((err) => console.log(err))
         }
