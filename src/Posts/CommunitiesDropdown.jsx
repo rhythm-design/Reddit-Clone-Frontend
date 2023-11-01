@@ -16,6 +16,7 @@ const CommunitiesDropdown = ({ selectedCommunity, setSelectedCommunity }) => {
   const toggleDropdown = (event) => {
     event.preventDefault();
     setDropdownVisible(!dropdownVisible);
+    console.log(dropdownVisible)
   };
 
   const handleFilterChange = (event) => {
@@ -36,7 +37,7 @@ const CommunitiesDropdown = ({ selectedCommunity, setSelectedCommunity }) => {
       {
         showCommunity ?
           <div className="dropdown" onClick={(e) => e.stopPropagation()}>
-            <button onClick={toggleDropdown} className="dropbtn" onClick={()=>setShowCommunity(false)}>
+            <button className="dropbtn" onClick={(e) => { setShowCommunity(false); toggleDropdown(e) }}>
               {selectedCommunity}
             </button>
           </div>
@@ -51,9 +52,9 @@ const CommunitiesDropdown = ({ selectedCommunity, setSelectedCommunity }) => {
                 communities ?
                   communities.map((com, key) => {
                     return (
-                      <>
+                      <span key={key}>
                         <p onClick={(e) => { setSelectedCommunity(com.name); toggleDropdown(e); setShowCommunity(true) }}>{com.name}</p>
-                      </>
+                      </span>
                     )
                   }) :
                   <p>Loading.....</p>

@@ -14,8 +14,8 @@ const CreatePost = () => {
 
                     <input placeholder="Create Post" onClick={() => navigate("/submit")} />
                     <div className='createPostOptions'>
-                        <a><i className="fa-solid fa-image"></i></a>
-                        <a><i className="fa-solid fa-link"></i></a>
+                        <a  onClick={() => navigate("/submit")}><i className="fa-solid fa-image"></i></a>
+                        <a  onClick={() => navigate("/submit")}><i className="fa-solid fa-link"></i></a>
                     </div>
                 </div>
 
