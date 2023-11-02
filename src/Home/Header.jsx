@@ -1,9 +1,21 @@
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 const Header = () => {
     const navigate = useNavigate()
 
     const [searchQuery, setSearchQuery] = useState("")
+    const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')));
+
+    useEffect(() => {
+        setUser(JSON.parse(localStorage.getItem('user')));
+    }, []);
+
+    const handleLogout = () => {
+        localStorage.removeItem("user");
+        setUser(null);
+        navigate("/");
+    };
+
     return (
         <>
             <header>
@@ -52,25 +64,25 @@ const Header = () => {
                             console.log("inside home page ", JSON.parse(localStorage.getItem('user')) ? "yes " : "no ")
                         }
 
-                        {
-                            !(JSON.parse(localStorage.getItem('user'))) ?
+                        {user ? (
                                 <span>
-                                    <a href="#" class="border border-blue-dark text-blue-dark px-8 py-2.2 font-semibold text-xs rounded ml-4 no-underline hover:border-blue hover:text-blue" onClick={() => navigate("/login")}>LOGIN</a>
-                                    <a href="#" class="border border-blue-dark text-blue-dark px-8 py-2.2 font-semibold text-xs rounded ml-4 no-underline hover:border-blue hover:text-blue" onClick={() => navigate("/register")}>Register</a>
-                                </span>
-                                :
-                                <span>
-                                    <a href="#" class="border border-blue-dark text-blue-dark px-8 py-2.2 font-semibold text-xs rounded ml-4 no-underline hover:border-blue hover:text-blue" >{
-                                        (JSON.parse(localStorage.getItem('user')).username)}</a>
-                                    <a href="#" class="border border-blue-dark text-blue-dark px-8 py-2.2 font-semibold text-xs rounded ml-4 no-underline hover:border-blue hover:text-blue"
-                                        onClick={() => {
-                                            localStorage.removeItem("user")
-                                        }}
-                                    >
+                                    <a href="#" className="border border-blue-dark text-blue-dark px-8 py-2.2 font-semibold text-xs rounded ml-4 no-underline hover:border-blue hover:text-blue">
+                                        {user.username}
+                                    </a>
+                                    <a href="#" className="border border-blue-dark text-blue-dark px-8 py-2.2 font-semibold text-xs rounded ml-4 no-underline hover:border-blue hover:text-blue" onClick={handleLogout}>
                                         Logout
                                     </a>
                                 </span>
-                        }
+                            ) : (
+                                <span>
+                                    <a href="#" className="border border-blue-dark text-blue-dark px-8 py-2.2 font-semibold text-xs rounded ml-4 no-underline hover:border-blue hover:text-blue" onClick={() => navigate("/login")}>
+                                        LOGIN
+                                    </a>
+                                    <a href="#" className="border border-blue-dark text-blue-dark px-8 py-2.2 font-semibold text-xs rounded ml-4 no-underline hover:border-blue hover:text-blue" onClick={() => navigate("/register")}>
+                                        Register
+                                    </a>
+                                </span>
+                        )}
 
 
 

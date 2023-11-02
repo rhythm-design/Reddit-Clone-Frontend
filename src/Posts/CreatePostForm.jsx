@@ -63,7 +63,7 @@ const CreatePostForm = () => {
             setIsDraft(false)
 
             navigate("/")
-            location.reload();
+            // location.reload();
 
         }
 
@@ -119,7 +119,7 @@ const CreatePostForm = () => {
                                         errorElement.textContent = '';
                                     }
                                 }}
-                                placeholder="Post Content" required />
+                                placeholder="Post Content" />
                             <span id="postContentError" style={{ color: 'red' }}></span>
                         </>
                         :

@@ -16,56 +16,33 @@ const Register = () => {
     const [password, setPassword] = useState("")
 
 
-    const getRequestServer = (e) => {
-        e.preventDefault()
+    const getRequestServer = async (e) => {
+        e.preventDefault();
         const userDetails = {
             'username': username,
             'email': email,
             'password': password
         }
-
-        console.log("userdetails: ", userDetails)
+    
+    
         if (username.length === 0 || password.length === 0 || email.length === 0) {
             const errorElement = document.getElementById('submissionError');
-            // toast.error("Invalid Credentials")
             errorElement.textContent = 'Ensure Correct Validations...';
         } else {
-
-            api.post("/auth/register", userDetails).then(async (res) => {
-                // toast.success("Successfully Registered User")
-                console.log("repsonse: ", res);
-                setUsername("");
-                setPassword("");
-                setEmail("");
-
-                const loginUser = {
-                    email: email,
-                    password: password
+            // Register the user
+            api.post("/auth/register", userDetails).then((response) => {
+                if (response.data.jwtToken) {
+                    console.log(response.data);
+                    localStorage.setItem("user", JSON.stringify(response.data));
                 }
-                var response = {};
-                await api.post("auth/login", loginUser)
-                    .then(response => {
-                        console.log(response);
-                        if (response.data.jwtToken) {
-                            console.log(response.data);
-                            localStorage.setItem("user", JSON.stringify(response.data));
-                        }
-    
-                        // toast.success("User created sucessfully")
-                        return response.data;
-                    });
-                const { message, loggedIn } = response
-    
-                console.log(message, loggedIn)
-                console.log(JSON.parse(localStorage.getItem('user')))
-    
-                if (JSON.parse(localStorage.getItem('user'))) navigate("/")
-
+                navigate('/')
+                // location.reload()
+            }).catch((error) => {
+                console.log("error in registring: " , error);
             })
-                .catch((err) => console.log(err))
         }
-
     }
+    
 
     return (
         <main>
@@ -123,18 +100,6 @@ const Register = () => {
                 <span> Already a Registered User ??  <a onClick={() => navigate("/login")}> Login </a></span>
 
             </form>
-            {/* <ToastContainer
-                position="bottom-right"
-                autoClose={5000}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-                theme="light"
-                /> */}
         </main>
     )
 }

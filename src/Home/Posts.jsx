@@ -42,6 +42,7 @@ const Posts = () => {
     }
 
     const handleVote = (post, num) => {
+        console.log("post.. ", post.id)
         post.voteCount += num;
 
         // Call the "/update" API endpoint to update the vote count
