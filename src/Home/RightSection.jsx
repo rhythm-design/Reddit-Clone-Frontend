@@ -2,6 +2,8 @@ import { useNavigate } from "react-router-dom"
 
 import { useState, useEffect } from 'react'
 import api from "../api"
+import { SimpleDialogContainer, simpleAlert } from 'react-simple-dialogs'
+
 const RightSection = () => {
 
     const [subreddit, setSubreddit] = useState([])
@@ -17,6 +19,8 @@ const RightSection = () => {
             .then((res) => { console.log(res); setCommunities(res.data) })
             .catch((err) => { })
     };
+
+    const alert = () => simpleAlert('You need to be looged in to create subreddit')
 
     return (
         <>
@@ -36,15 +40,34 @@ const RightSection = () => {
                                 </div>
                                 <p class="font-normal mb-3 text-sm leading-normal">The best posts on Reddit for you, pulled from the most active communities on Reddit. Check here to see the most shared, upvoted, and commented content on the internet.</p>
                             </div>
-                            <button style={{
-                                display: "flex",
-                                justifyContent: "center",
-                                alignItems: "center",
-                                border: "solid grey",
-                                borderWidth: "0.2 em",
-                                width: "100%",
-                                padding: "1vh 1vw"
-                            }} onClick={() => { navigate("/create/community") }}>Create Community</button>
+                            <SimpleDialogContainer />
+                            <div>
+                                {
+                                    localStorage.getItem('user') ? 
+                                    <button style={{
+                                        display: "flex",
+                                        justifyContent: "center",
+                                        alignItems: "center",
+                                        border: "solid grey",
+                                        borderWidth: "0.2 em",
+                                        width: "100%",
+                                        padding: "1vh 1vw"
+                                    }} onClick={() => { navigate("/create/community") }}>Create Community</button>
+
+                                    : 
+
+                                    <button style={{
+                                        display: "flex",
+                                        justifyContent: "center",
+                                        alignItems: "center",
+                                        border: "solid grey",
+                                        borderWidth: "0.2 em",
+                                        width: "100%",
+                                        padding: "1vh 1vw"
+                                    }} onClick={alert}>Create Community</button>
+                                }
+                                
+                            </div>
                         </div>
                     </div>
 
