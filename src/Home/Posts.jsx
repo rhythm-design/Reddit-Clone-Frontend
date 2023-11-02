@@ -28,34 +28,36 @@ const Posts = () => {
         setIsModalOpen(false);
     };
 
-
-    const deletePostById = (postId) => {
-        event.preventDefault();
-        console.log("delete api clalled: ", postId)
+    const deletePostById = (postId) => {    
+        console.log("delete API called: ", postId);
+    
         api.get(`/delete/${postId}`)
-            .then((res)=>console.log(res))
-            .catch((err)=>console.log(err))
-        
+            .then((res) => {
+                console.log(res);
+    
+                // Update the state to remove the deleted post from the posts array
+                setPosts(posts.filter(post => post.id !== postId));
+            })
+            .catch((err) => console.log(err));
     }
 
     const handleVote = (post, num) => {
-        console.log("post.. ", post.id)
         post.voteCount += num;
-
-        // Call the "/update" API endpoint to update the vote count
-        api.put(`/update/${post.id}`, { voteCount: post.voteCount, ...post })
-            .then((res) => {
-                // Successfully updated the vote count in the backend
-                // You can update the state or take any necessary action here
-            })
-            .catch((err) => {
-                console.log(err);
-                // Handle any errors that occur during the API call
-            });
-
-        // Update the state to reflect the updated vote count
+        
+        const updateData = {
+          voteCount: post.voteCount,
+        };
+        api.put(`/update/${post.id}`, updateData)
+          .then((res) => {
+            console.trace(res);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      
         setPosts([...posts]);
-    };
+      };
+      
 
     return (
         <>
